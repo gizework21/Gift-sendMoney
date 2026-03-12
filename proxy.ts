@@ -1,5 +1,6 @@
 import { withAuth } from "next-auth/middleware";
 import { NextResponse } from "next/server";
+import { authSecret } from "@/lib/auth-env";
 
 export default withAuth(
   function proxy(req) {
@@ -29,6 +30,10 @@ export default withAuth(
     return NextResponse.next();
   },
   {
+    pages: {
+      signIn: "/login",
+    },
+    secret: authSecret,
     callbacks: {
       authorized: () => true,
     },

@@ -2,6 +2,7 @@ import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { MOCK_USERS } from "@/features/auth/auth.constants";
 import type { AuthUser } from "@/features/auth/auth.types";
+import { authSecret } from "@/lib/auth-env";
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -58,7 +59,7 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/login",
   },
-  secret: process.env.NEXTAUTH_SECRET ?? "dev-secret",
+  secret: authSecret,
 };
 
 export function isAuthenticated(user: AuthUser | null) {
