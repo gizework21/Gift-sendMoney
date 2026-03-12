@@ -110,9 +110,16 @@ export function ReceiverAccountFields({
   );
 }
 
-export function ReceiverAccountActions({ onBack }: { onBack: () => void }) {
+export function ReceiverAccountActions({
+  isLoading,
+  onBack,
+}: {
+  isLoading?: boolean;
+  onBack: () => void;
+}) {
   return (
     <ModalFooter
+      isLoading={isLoading}
       primaryAction={{ label: "Continue", type: "submit" }}
       secondaryAction={{
         label: "Back",

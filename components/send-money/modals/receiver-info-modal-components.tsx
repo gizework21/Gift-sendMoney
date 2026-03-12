@@ -38,10 +38,17 @@ export function ModalIntro({ onBack }: { onBack: () => void }) {
   );
 }
 
-export function ModalActions({ onBack }: { onBack: () => void }) {
+export function ModalActions({
+  isLoading,
+  onBack,
+}: {
+  isLoading?: boolean;
+  onBack: () => void;
+}) {
   return (
     <ModalFooter
       desktopContainerClassName="px-7 py-4"
+      isLoading={isLoading}
       primaryAction={{ label: "Continue", type: "submit" }}
       secondaryAction={{
         label: "Back",

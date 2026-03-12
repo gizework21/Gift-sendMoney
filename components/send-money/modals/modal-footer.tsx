@@ -2,6 +2,7 @@
 
 import type { ButtonHTMLAttributes } from "react";
 
+import { LoadingSpinner } from "@/components/shared/loading-spinner";
 import { Button, type ButtonProps } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -18,6 +19,7 @@ type FooterAction = {
 export type ModalFooterProps = {
   desktopActionsClassName?: string;
   desktopContainerClassName?: string;
+  isLoading?: boolean;
   mobileActionsClassName?: string;
   mobileContainerClassName?: string;
   mobileShowSecondary?: boolean;
@@ -28,15 +30,18 @@ export type ModalFooterProps = {
 function FooterButton({
   action,
   className,
+  isLoading = false,
 }: {
   action: FooterAction;
   className?: string;
+  isLoading?: boolean;
 }) {
   return (
     <Button
       type={action.type ?? "button"}
       variant={action.variant ?? "primary"}
       onClick={action.onClick}
+      disabled={isLoading}
       className={cn(
         "py-3 text-sm font-semibold md:py-5 rounded-full",
         action.variant === "primary" && "rounded-full",
@@ -44,7 +49,14 @@ function FooterButton({
         action.className,
       )}
     >
-      {action.label}
+      {isLoading ? (
+        <>
+          <LoadingSpinner className="text-current" />
+          {action.label}
+        </>
+      ) : (
+        action.label
+      )}
     </Button>
   );
 }
@@ -52,6 +64,7 @@ function FooterButton({
 export function ModalFooter({
   desktopActionsClassName,
   desktopContainerClassName,
+  isLoading = false,
   mobileActionsClassName,
   mobileContainerClassName,
   mobileShowSecondary = false,
@@ -70,13 +83,22 @@ export function ModalFooter({
           <div
             className={cn("flex items-center gap-3", mobileActionsClassName)}
           >
-            <FooterButton action={secondaryAction} className="flex-1" />
-            <FooterButton action={primaryAction} className="flex-1" />
+            <FooterButton
+              action={secondaryAction}
+              className="flex-1"
+              isLoading={false}
+            />
+            <FooterButton
+              action={primaryAction}
+              className="flex-1"
+              isLoading={isLoading}
+            />
           </div>
         ) : (
           <FooterButton
             action={primaryAction}
             className={cn("w-full", mobileActionsClassName)}
+            isLoading={isLoading}
           />
         )}
       </div>
@@ -90,7 +112,7 @@ export function ModalFooter({
           )}
         >
           <FooterButton action={secondaryAction} />
-          <FooterButton action={primaryAction} />
+          <FooterButton action={primaryAction} isLoading={isLoading} />
         </div>
       ) : null}
     </>

@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { Modal } from "@/components/ui/modal";
 import { ModalFooter } from "@/components/send-money/modals/modal-footer";
 import Image from "next/image";
@@ -29,6 +30,17 @@ export function BankListModal({
   onClose,
   onContinue,
 }: BankListModalProps) {
+  const [isContinuing, setIsContinuing] = useState(false);
+
+  const handleContinue = async () => {
+    if (!selectedBank || isContinuing) return;
+
+    setIsContinuing(true);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsContinuing(false);
+    onContinue();
+  };
+
   return (
     <Modal
       open={open}
@@ -100,7 +112,8 @@ export function BankListModal({
 
       <ModalFooter
         desktopContainerClassName="mt-6 px-7 py-4"
-        primaryAction={{ label: "Continue", onClick: onContinue }}
+        isLoading={isContinuing}
+        primaryAction={{ label: "Continue", onClick: handleContinue }}
         secondaryAction={{
           label: "Back",
           onClick: onClose,

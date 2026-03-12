@@ -37,7 +37,7 @@ export function ReceiverInfoModal({
     setValue,
     watch,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<ReceiverInfo>({
     resolver: yupResolver(receiverInfoSchema),
     defaultValues: receiverInfo,
@@ -53,7 +53,8 @@ export function ReceiverInfoModal({
   // eslint-disable-next-line react-hooks/incompatible-library
   const contactPreference = watch("contactPreference");
 
-  const onSubmit = (data: ReceiverInfo) => {
+  const onSubmit = async (data: ReceiverInfo) => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setReceiverInfo(data);
     onContinue();
   };
@@ -85,7 +86,7 @@ export function ReceiverInfoModal({
             fieldClass={fieldClass}
           />
         </div>
-        <ModalActions onBack={onBack} />
+        <ModalActions isLoading={isSubmitting} onBack={onBack} />
       </form>
     </Modal>
   );

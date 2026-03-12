@@ -62,14 +62,17 @@ export function PaymentAmountCard() {
 }
 
 export function PaymentInfoActions({
+  isLoading,
   onBack,
 }: {
+  isLoading?: boolean;
   onBack: () => void;
 }) {
   const usdAmount = useSendMoneyStore((state) => state.transferSummary.usdAmount);
 
   return (
     <ModalFooter
+      isLoading={isLoading}
       primaryAction={{
         label: `Pay For $ ${usdAmount.toFixed(2)}`,
         type: "submit",

@@ -38,7 +38,7 @@ export function ReceiverAccountModal({
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<ReceiverAccount>({
     resolver: yupResolver(receiverAccountSchema),
     defaultValues: receiverAccount,
@@ -51,7 +51,8 @@ export function ReceiverAccountModal({
     }
   }, [open, receiverAccount, reset]);
 
-  const onSubmit = (data: ReceiverAccount) => {
+  const onSubmit = async (data: ReceiverAccount) => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setReceiverAccount(data);
     onContinue();
   };
@@ -81,7 +82,7 @@ export function ReceiverAccountModal({
           />
         </div>
 
-        <ReceiverAccountActions onBack={onBack} />
+        <ReceiverAccountActions isLoading={isSubmitting} onBack={onBack} />
       </form>
     </Modal>
   );

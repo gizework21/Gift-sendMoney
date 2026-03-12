@@ -39,7 +39,7 @@ export function PaymentInfoModal({
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<PaymentInfo>({
     resolver: yupResolver(paymentSchema),
     defaultValues: paymentInfo,
@@ -52,7 +52,8 @@ export function PaymentInfoModal({
     }
   }, [open, paymentInfo, reset]);
 
-  const onSubmit = (data: PaymentInfo) => {
+  const onSubmit = async (data: PaymentInfo) => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setPaymentInfo(data);
     onContinue();
   };
@@ -77,7 +78,7 @@ export function PaymentInfoModal({
           </div>
         </div>
 
-        <PaymentInfoActions onBack={onBack} />
+        <PaymentInfoActions isLoading={isSubmitting} onBack={onBack} />
       </form>
     </Modal>
   );

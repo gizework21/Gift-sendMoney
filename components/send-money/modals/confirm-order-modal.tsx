@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { ChevronLeft } from "lucide-react";
 import { ModalFooter } from "@/components/send-money/modals/modal-footer";
 import { Modal } from "@/components/ui/modal";
@@ -17,6 +18,7 @@ export function ConfirmOrderModal({
   onBack,
   onContinue,
 }: ConfirmOrderModalProps) {
+  const [isContinuing, setIsContinuing] = useState(false);
   const selectedBank = useSendMoneyStore((state) => state.selectedBank);
   const receiverInfo = useSendMoneyStore((state) => state.receiverInfo);
   const receiverAccount = useSendMoneyStore((state) => state.receiverAccount);
@@ -31,6 +33,15 @@ export function ConfirmOrderModal({
     .slice(0, 2)
     .map((part) => part[0]?.toUpperCase())
     .join("");
+
+  const handleContinue = async () => {
+    if (isContinuing) return;
+
+    setIsContinuing(true);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsContinuing(false);
+    onContinue();
+  };
 
   return (
     <Modal
@@ -116,7 +127,8 @@ export function ConfirmOrderModal({
         </div>
 
         <ModalFooter
-          primaryAction={{ label: "Continue", onClick: onContinue }}
+          isLoading={isContinuing}
+          primaryAction={{ label: "Continue", onClick: handleContinue }}
           secondaryAction={{
             label: "Back",
             onClick: onBack,
