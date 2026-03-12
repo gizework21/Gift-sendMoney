@@ -7,8 +7,8 @@ import { Modal } from "@/components/ui/modal";
 import {
   ModalActions,
   ModalIntro,
-} from "@/components/send-money/receiver-info-modal-components";
-import { ReceiverInfoFields } from "@/components/send-money/receiver-info-modal-fields";
+} from "@/components/send-money/modals/receiver-info-modal-components";
+import { ReceiverInfoFields } from "@/components/send-money/modals/receiver-info-modal-fields";
 import {
   useSendMoneyStore,
   type ReceiverInfo,

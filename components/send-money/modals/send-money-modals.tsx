@@ -1,11 +1,11 @@
 "use client";
 
-import { BankListModal } from "@/components/send-money/bank-list-modal";
-import { ConfirmOrderModal } from "@/components/send-money/confirm-order-modal";
-import { PaymentInfoModal } from "@/components/send-money/payment-info-modal";
-import { ReceiverAccountModal } from "@/components/send-money/receiver-account-modal";
-import { ReceiverInfoModal } from "@/components/send-money/receiver-info-modal";
-import { SuccessModal } from "@/components/send-money/success-modal";
+import { BankListModal } from "@/components/send-money/modals/bank-list-modal";
+import { ConfirmOrderModal } from "@/components/send-money/modals/confirm-order-modal";
+import { PaymentInfoModal } from "@/components/send-money/modals/payment-info-modal";
+import { ReceiverAccountModal } from "@/components/send-money/modals/receiver-account-modal";
+import { ReceiverInfoModal } from "@/components/send-money/modals/receiver-info-modal";
+import { SuccessModal } from "@/components/send-money/modals/success-modal";
 import { BANKS } from "@/lib/constants";
 import { useSendMoneyStore } from "@/store/use-send-money-store";
 

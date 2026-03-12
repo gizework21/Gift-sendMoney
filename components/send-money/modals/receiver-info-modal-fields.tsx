@@ -11,12 +11,12 @@ import {
   LocationField,
   PhoneField,
   SelectedBankCard,
-} from "@/components/send-money/receiver-info-modal-inputs";
+} from "@/components/send-money/modals/receiver-info-modal-inputs";
 import {
   ContactPreferenceToggle,
   NoteField,
   TermsField,
-} from "@/components/send-money/receiver-info-modal-preferences";
+} from "@/components/send-money/modals/receiver-info-modal-preferences";
 import type { ReceiverInfo } from "@/store/use-send-money-store";
 
 export const componentType = "client";

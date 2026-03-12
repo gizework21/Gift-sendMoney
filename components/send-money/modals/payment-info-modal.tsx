@@ -4,12 +4,12 @@ import { Modal } from "@/components/ui/modal";
 import {
   PaymentMethodCard,
   BillingAddressCard,
-} from "@/components/send-money/payment-info-modal-cards";
+} from "@/components/send-money/modals/payment-info-modal-cards";
 import {
   PaymentAmountCard,
   PaymentInfoActions,
   PaymentInfoHeader,
-} from "@/components/send-money/payment-info-modal-header";
+} from "@/components/send-money/modals/payment-info-modal-header";
 
 export const componentType = "client";
 

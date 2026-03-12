@@ -3,11 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 
+import { ActionTile } from "@/components/admin/dashboard-actions-components";
 import {
-  ActionTile,
   ComingSoonModal,
   type PendingAction,
-} from "@/components/admin/dashboard-actions-components";
+} from "@/components/admin/modals/coming-soon-modal";
 import { adminActions } from "@/data/admin-actions";
 
 export const componentType = "client";

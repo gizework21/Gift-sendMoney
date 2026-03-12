@@ -9,7 +9,7 @@ import {
   ReceiverAccountActions,
   ReceiverAccountFields,
   ReceiverAccountIntro,
-} from "@/components/send-money/receiver-account-modal-components";
+} from "@/components/send-money/modals/receiver-account-modal-components";
 import { receiverAccountSchema } from "@/validations/receiver-account-schema";
 import {
   useSendMoneyStore,

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { SendMoneyCalculator } from "@/components/send-money/send-money-calculator";
 import { SendMoneyHeader } from "@/components/send-money/send-money-header";
 import { SendMoneyHero } from "@/components/send-money/send-money-hero";
-import { SendMoneyModals } from "@/components/send-money/send-money-modals";
+import { SendMoneyModals } from "@/components/send-money/modals/send-money-modals";
 import { useSendMoneyStore } from "@/store/use-send-money-store";
 import { BANKS } from "@/lib/constants";
 

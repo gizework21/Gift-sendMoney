@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Landmark, MapPin } from "lucide-react";
+import { Landmark } from "lucide-react";
 import type { ReactNode } from "react";
 import type { UseFormRegisterReturn } from "react-hook-form";
 
@@ -131,8 +131,8 @@ export function LocationField({
           className={`${className} pr-10`}
           {...inputProps}
         />
-        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[color:var(--color-primary)]">
-          <MapPin aria-hidden="true" className="h-5 w-5 fill-current" />
+        <span className="absolute right-3 top-1/2 -translate-y-1/2">
+          <Image src={"/locationIcon.svg"} width={30} height={20} alt="icon" />
         </span>
       </div>
       <FieldErrorText message={error} />
