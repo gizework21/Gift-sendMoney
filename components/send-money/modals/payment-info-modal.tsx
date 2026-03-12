@@ -1,5 +1,9 @@
 "use client";
 
+import * as React from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+
 import { Modal } from "@/components/ui/modal";
 import {
   PaymentMethodCard,
@@ -10,6 +14,11 @@ import {
   PaymentInfoActions,
   PaymentInfoHeader,
 } from "@/components/send-money/modals/payment-info-modal-header";
+import {
+  useSendMoneyStore,
+  type PaymentInfo,
+} from "@/store/use-send-money-store";
+import { paymentSchema } from "@/validations/payment-schema";
 
 export const componentType = "client";
 
@@ -24,6 +33,30 @@ export function PaymentInfoModal({
   onBack,
   onContinue,
 }: PaymentInfoModalProps) {
+  const paymentInfo = useSendMoneyStore((state) => state.paymentInfo);
+  const setPaymentInfo = useSendMoneyStore((state) => state.setPaymentInfo);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<PaymentInfo>({
+    resolver: yupResolver(paymentSchema),
+    defaultValues: paymentInfo,
+    mode: "onBlur",
+  });
+
+  React.useEffect(() => {
+    if (open) {
+      reset(paymentInfo);
+    }
+  }, [open, paymentInfo, reset]);
+
+  const onSubmit = (data: PaymentInfo) => {
+    setPaymentInfo(data);
+    onContinue();
+  };
+
   return (
     <Modal
       open={open}
@@ -31,18 +64,21 @@ export function PaymentInfoModal({
       containerClassName="justify-end items-stretch p-0 sm:items-start sm:p-[30px]"
       className="h-screen w-screen max-w-none overflow-hidden rounded-none border-0 bg-[#f4fff7] p-0 shadow-none sm:h-[calc(100vh-60px)] sm:w-[94vw] sm:max-w-155 sm:overflow-auto sm:rounded-4xl sm:border-[#dbe8e1] sm:shadow-[0_30px_80px_rgba(10,90,60,0.25)]"
     >
-      <div className="flex h-full min-h-0 flex-col">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex h-full min-h-0 flex-col"
+      >
         <div className="min-h-0 flex-1 overflow-y-auto">
           <PaymentInfoHeader onBack={onBack} />
           <div className="space-y-5 px-6 pb-6">
             <PaymentAmountCard />
-            <PaymentMethodCard />
-            <BillingAddressCard />
+            <PaymentMethodCard errors={errors} register={register} />
+            <BillingAddressCard errors={errors} register={register} />
           </div>
         </div>
 
-        <PaymentInfoActions onBack={onBack} onContinue={onContinue} />
-      </div>
+        <PaymentInfoActions onBack={onBack} />
+      </form>
     </Modal>
   );
 }

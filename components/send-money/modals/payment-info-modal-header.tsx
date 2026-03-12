@@ -63,10 +63,8 @@ export function PaymentAmountCard() {
 
 export function PaymentInfoActions({
   onBack,
-  onContinue,
 }: {
   onBack: () => void;
-  onContinue: () => void;
 }) {
   const usdAmount = useSendMoneyStore((state) => state.transferSummary.usdAmount);
 
@@ -74,7 +72,7 @@ export function PaymentInfoActions({
     <ModalFooter
       primaryAction={{
         label: `Pay For $ ${usdAmount.toFixed(2)}`,
-        onClick: onContinue,
+        type: "submit",
       }}
       secondaryAction={{
         label: "Back",

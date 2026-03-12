@@ -16,6 +16,17 @@ export type ReceiverAccount = {
   senderName: string;
 };
 
+export type PaymentInfo = {
+  cardNumber: string;
+  cvv: string;
+  expiryMonth: string;
+  expiryYear: string;
+  country: string;
+  address: string;
+  city: string;
+  postalCode: string;
+};
+
 export type SendMoneyStep =
   | null
   | "bank"
@@ -44,6 +55,8 @@ type SendMoneyState = {
   setReceiverInfo: (info: ReceiverInfo) => void;
   receiverAccount: ReceiverAccount;
   setReceiverAccount: (info: ReceiverAccount) => void;
+  paymentInfo: PaymentInfo;
+  setPaymentInfo: (info: PaymentInfo) => void;
   transferSummary: TransferSummary;
   setTransferSummary: (summary: Partial<TransferSummary>) => void;
   finalizeTransfer: () => void;
@@ -63,6 +76,17 @@ const defaultReceiverInfo: ReceiverInfo = {
 const defaultReceiverAccount: ReceiverAccount = {
   accountNumber: "",
   senderName: "",
+};
+
+const defaultPaymentInfo: PaymentInfo = {
+  cardNumber: "",
+  cvv: "",
+  expiryMonth: "",
+  expiryYear: "",
+  country: "",
+  address: "",
+  city: "",
+  postalCode: "",
 };
 
 const defaultTransferSummary: TransferSummary = {
@@ -88,6 +112,8 @@ export const useSendMoneyStore = create<SendMoneyState>((set) => ({
   setReceiverInfo: (info) => set({ receiverInfo: info }),
   receiverAccount: defaultReceiverAccount,
   setReceiverAccount: (info) => set({ receiverAccount: info }),
+  paymentInfo: defaultPaymentInfo,
+  setPaymentInfo: (info) => set({ paymentInfo: info }),
   transferSummary: defaultTransferSummary,
   setTransferSummary: (summary) =>
     set((state) => ({
