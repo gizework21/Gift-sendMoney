@@ -1,21 +1,16 @@
 "use client";
 
-import { ChevronLeft, FileText } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ChevronLeft } from "lucide-react";
+import { ModalFooter } from "@/components/send-money/modals/modal-footer";
 import { Modal } from "@/components/ui/modal";
 import { useSendMoneyStore } from "@/store/use-send-money-store";
 import Image from "next/image";
-
 
 export type ConfirmOrderModalProps = {
   open: boolean;
   onBack: () => void;
   onContinue: () => void;
 };
-
-function DocumentIcon() {
-  return <FileText aria-hidden="true" className="h-16 w-16 text-[#b0b0b0]" />;
-}
 
 export function ConfirmOrderModal({
   open,
@@ -51,7 +46,7 @@ export function ConfirmOrderModal({
           </div>
 
           <div className="flex flex-col items-center text-center">
-            <Image src={"/doc.svg"} width={150} height={150} alt="icon"/>
+            <Image src={"/doc.svg"} width={150} height={150} alt="icon" />
             <h2 className="mt-3 text-xl font-bold text-[#111]">
               Confirm Order Information
             </h2>
@@ -110,35 +105,15 @@ export function ConfirmOrderModal({
           </div>
         </div>
 
-        <div className="mt-auto w-full bg-white px-6 py-4 md:hidden">
-          <Button
-            type="button"
-            variant="primary"
-            onClick={onContinue}
-            className="w-full rounded-2xl py-3 text-sm font-semibold md:py-5"
-          >
-            Continue
-          </Button>
-        </div>
-
-        <div className="hidden w-full grid-cols-2 gap-4 bg-white py-6 px-7 md:grid">
-          <Button
-            type="button"
-            variant="primaryOutline"
-            onClick={onBack}
-            className="py-3 text-sm font-semibold text-[#111] md:py-5"
-          >
-            Back
-          </Button>
-          <Button
-            type="button"
-            variant="primary"
-            onClick={onContinue}
-            className="rounded-2xl py-3 text-sm font-semibold md:py-5"
-          >
-            Continue
-          </Button>
-        </div>
+        <ModalFooter
+          primaryAction={{ label: "Continue", onClick: onContinue }}
+          secondaryAction={{
+            label: "Back",
+            onClick: onBack,
+            variant: "primaryOutline",
+            className: "text-[#111]",
+          }}
+        />
       </div>
     </Modal>
   );

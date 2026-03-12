@@ -3,7 +3,7 @@
 import { Icon } from "@iconify/react";
 import { ChevronLeft } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import { ModalFooter } from "@/components/send-money/modals/modal-footer";
 
 export const componentType = "client";
 
@@ -64,36 +64,14 @@ export function PaymentInfoActions({
   onContinue: () => void;
 }) {
   return (
-    <>
-      <div className="mt-auto w-full bg-white px-6 py-4 md:hidden">
-        <Button
-          type="button"
-          variant="primary"
-          onClick={onContinue}
-          className="w-full rounded-2xl py-3 text-sm font-semibold md:py-5"
-        >
-          Pay For $ 300.00
-        </Button>
-      </div>
-
-      <div className="hidden w-full grid-cols-2 gap-4 bg-white px-7 py-6 md:grid">
-        <Button
-          type="button"
-          variant="primaryOutline"
-          onClick={onBack}
-          className="py-3 text-sm font-semibold text-[#111] md:py-5"
-        >
-          Back
-        </Button>
-        <Button
-          type="button"
-          variant="primary"
-          onClick={onContinue}
-          className="rounded-2xl py-3 text-sm font-semibold md:py-5"
-        >
-          Pay For $ 300.00
-        </Button>
-      </div>
-    </>
+    <ModalFooter
+      primaryAction={{ label: "Pay For $ 300.00", onClick: onContinue }}
+      secondaryAction={{
+        label: "Back",
+        onClick: onBack,
+        variant: "primaryOutline",
+        className: "text-[#111]",
+      }}
+    />
   );
 }

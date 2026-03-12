@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { Button } from "@/components/ui/button";
+import { ModalFooter } from "@/components/send-money/modals/modal-footer";
 import { Modal } from "@/components/ui/modal";
 import Image from "next/image";
 
@@ -105,26 +105,17 @@ export function SuccessModal({ open, onDone }: SuccessModalProps) {
           </div>
         </div>
 
-        <div className="bg-white px-7 py-6">
-          <div className="flex items-center gap-3 sm:gap-4">
-            <Button
-              type="button"
-              variant="primaryOutline"
-              onClick={onDone}
-              className="flex-1 py-3 text-sm font-semibold md:py-5"
-            >
-              Back to Home
-            </Button>
-            <Button
-              type="button"
-              variant="primary"
-              onClick={handleGetReceipt}
-              className="flex-1 rounded-2xl py-3 text-sm font-semibold md:py-5"
-            >
-              Get Receipt
-            </Button>
-          </div>
-        </div>
+        <ModalFooter
+          mobileShowSecondary
+          mobileActionsClassName="gap-3 sm:gap-4"
+          primaryAction={{ label: "Get Receipt", onClick: handleGetReceipt }}
+          secondaryAction={{
+            label: "Back to Home",
+            onClick: onDone,
+            variant: "primaryOutline",
+          }}
+          desktopActionsClassName="md:flex md:items-center gap-3 sm:gap-4"
+        />
       </div>
     </Modal>
   );

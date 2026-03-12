@@ -4,8 +4,8 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight, Search } from "lucide-react";
 import type { FieldErrors, UseFormRegister } from "react-hook-form";
 
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { ModalFooter } from "@/components/send-money/modals/modal-footer";
 import type { ReceiverAccount } from "@/store/use-send-money-store";
 
 export const componentType = "client";
@@ -112,34 +112,14 @@ export function ReceiverAccountFields({
 
 export function ReceiverAccountActions({ onBack }: { onBack: () => void }) {
   return (
-    <>
-      <div className="mt-auto w-full bg-white px-6 py-4 md:hidden">
-        <Button
-          type="submit"
-          variant="primary"
-          className="w-full rounded-2xl py-3 text-sm font-semibold md:py-5"
-        >
-          Continue
-        </Button>
-      </div>
-
-      <div className="hidden w-full grid-cols-2 gap-4 bg-white px-7 py-6 md:grid">
-        <Button
-          type="button"
-          variant="primaryOutline"
-          onClick={onBack}
-          className="py-3 text-sm font-semibold text-[#111] md:py-5"
-        >
-          Back
-        </Button>
-        <Button
-          type="submit"
-          variant="primary"
-          className="rounded-2xl py-3 text-sm font-semibold md:py-5"
-        >
-          Continue
-        </Button>
-      </div>
-    </>
+    <ModalFooter
+      primaryAction={{ label: "Continue", type: "submit" }}
+      secondaryAction={{
+        label: "Back",
+        onClick: onBack,
+        variant: "primaryOutline",
+        className: "text-[#111]",
+      }}
+    />
   );
 }

@@ -1,6 +1,6 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
+import { ModalFooter } from "@/components/send-money/modals/modal-footer";
 import Image from "next/image";
 import { ChevronLeft } from "lucide-react";
 
@@ -98,35 +98,16 @@ export function BankListModal({
         </div>
       </div>
 
-      <div className="mt-auto w-full bg-white px-6 py-4 md:hidden">
-        <Button
-          type="button"
-          variant="primary"
-          onClick={onContinue}
-          className="w-full rounded-2xl py-3 text-sm font-semibold md:py-5"
-        >
-          Continue
-        </Button>
-      </div>
-
-      <div className="mt-6 hidden w-full grid-cols-2 gap-4 bg-white py-4 px-7 md:grid">
-        <Button
-          type="button"
-          variant="primaryOutline"
-          onClick={onClose}
-          className="py-3 text-sm font-semibold text-[#111] md:py-5"
-        >
-          Back
-        </Button>
-        <Button
-          type="button"
-          variant="primary"
-          onClick={onContinue}
-          className="rounded-2xl py-3 text-sm font-semibold md:py-5"
-        >
-          Continue
-        </Button>
-      </div>
+      <ModalFooter
+        desktopContainerClassName="mt-6 px-7 py-4"
+        primaryAction={{ label: "Continue", onClick: onContinue }}
+        secondaryAction={{
+          label: "Back",
+          onClick: onClose,
+          variant: "primaryOutline",
+          className: "text-[#111]",
+        }}
+      />
     </Modal>
   );
 }
