@@ -2,6 +2,8 @@ import * as React from "react";
 
 import { UserMenu } from "@/components/admin/user-menu";
 
+export const componentType = "server";
+
 export type AdminDashboardHeaderProps = {
   userName: string;
 };

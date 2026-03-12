@@ -24,5 +24,8 @@ export const receiverInfoSchema: yup.ObjectSchema<ReceiverInfo> = yup.object({
     })
     .default(""),
   note: yup.string().optional().default(""),
-  agree: yup.boolean().oneOf([true], "You must agree to continue"),
+  agree: yup
+    .boolean()
+    .oneOf([true], "You must agree to continue")
+    .required("You must agree to continue"),
 });

@@ -1,8 +1,12 @@
+"use client";
+
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
 import { useSendMoneyStore } from "@/store/use-send-money-store";
+
+export const componentType = "client";
 
 export type ConfirmOrderModalProps = {
   open: boolean;
@@ -44,11 +48,31 @@ export function ConfirmOrderModal({
     <Modal
       open={open}
       onClose={onBack}
-      containerClassName="justify-end items-start p-[30px]"
-      className="h-[calc(100vh-60px)] w-[94vw] max-w-155 overflow-auto rounded-4xl border-[#dbe8e1] bg-[#f4fff7] p-0 shadow-[0_30px_80px_rgba(10,90,60,0.25)]"
+      containerClassName="justify-end items-stretch p-0 sm:items-start sm:p-[30px]"
+      className="h-screen w-screen max-w-none overflow-auto rounded-none border-0 bg-[#f4fff7] p-0 shadow-none sm:h-[calc(100vh-60px)] sm:w-[94vw] sm:max-w-155 sm:rounded-4xl sm:border-[#dbe8e1] sm:shadow-[0_30px_80px_rgba(10,90,60,0.25)]"
     >
       <div className="flex flex-col justify-between h-full">
         <div>
+          <div className="p-6 pb-0 md:hidden">
+            <button
+              type="button"
+              onClick={onBack}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white bg-white shadow-sm"
+              aria-label="Go back"
+            >
+              <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+                <path
+                  d="M15 6l-6 6 6 6"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+
           <div className="flex flex-col items-center text-center">
             <DocumentIcon />
             <h2 className="mt-3 text-xl font-bold text-[#111]">
@@ -109,7 +133,18 @@ export function ConfirmOrderModal({
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 bg-white py-6 px-7">
+        <div className="mt-auto w-full bg-white px-6 py-4 md:hidden">
+          <Button
+            type="button"
+            variant="primary"
+            onClick={onContinue}
+            className="w-full py-3 text-sm font-semibold rounded-2xl"
+          >
+            Continue
+          </Button>
+        </div>
+
+        <div className="hidden w-full grid-cols-2 gap-4 bg-white py-6 px-7 md:grid">
           <Button
             type="button"
             variant="primaryOutline"

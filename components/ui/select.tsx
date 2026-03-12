@@ -2,6 +2,8 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
+export const componentType = "server";
+
 export type SelectProps = React.SelectHTMLAttributes<HTMLSelectElement>;
 
 export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(

@@ -4,6 +4,8 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
+export const componentType = "client";
+
 export type DialogProps = {
   open?: boolean;
   onClose?: () => void;

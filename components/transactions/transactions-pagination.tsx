@@ -1,3 +1,4 @@
+export const componentType = "server";
 export type TransactionsPaginationProps = {
   current?: string;
   pages?: string[];

@@ -1,9 +1,11 @@
-"use client";
-
 import Image from "next/image";
 import { type UseFormRegister } from "react-hook-form";
 
 import { Input } from "@/components/ui/input";
+import Router from "next/router";
+import Link from "next/link";
+
+export const componentType = "server";
 
 export type LoginFormValues = {
   phone: string;
@@ -23,18 +25,20 @@ export const AuthHero = () => (
   <section className="hidden md:flex min-h-full flex-col items-center justify-center bg-[#eaffed] px-6 py-10 sm:px-8 sm:py-12 lg:rounded-4xl lg:px-10 lg:py-16">
     <div className="flex flex-col text-center">
       <div className="flex justify-center">
-        <Image
-          src="/logo.svg"
-          width={300}
-          height={310}
-          alt="STAR Gifts logo"
-          priority
-          className="h-auto w-[200px] sm:w-[240px] lg:w-[300px]"
-        />
+        <Link href={"/"}>
+          <Image
+            src="/logo.svg"
+            width={300}
+            height={310}
+            alt="STAR Gifts logo"
+            priority
+            className="h-auto w-[200px] sm:w-[240px] lg:w-[300px] cursor-pointer"
+          />
+        </Link>
       </div>
       <p className="mt-4 max-w-md text-sm text-[#9b9b9b]">
-        Explore and purchase a variety of special gifts through STAR Gifts,
-        with easy and secure payment options.
+        Explore and purchase a variety of special gifts through STAR Gifts, with
+        easy and secure payment options.
       </p>
     </div>
   </section>
@@ -43,13 +47,15 @@ export const AuthHero = () => (
 export const AuthCardHeader = ({ description }: { description: string }) => (
   <div className="text-center">
     <div className="flex justify-center">
-      <Image
-        src="/logo.svg"
-        width={130}
-        height={100}
-        alt="STAR Gifts logo"
-        className="h-auto w-[100px] sm:w-[120px] lg:w-[130px]"
-      />
+      <Link href={"/"}>
+        <Image
+          src="/logo.svg"
+          width={130}
+          height={100}
+          alt="STAR Gifts logo"
+          className="h-auto w-[100px] sm:w-[120px] lg:w-[130px] cursor-pointer"
+        />
+      </Link>
     </div>
     <h2 className="mt-3 text-lg font-bold text-[#111]">
       Sign in to your Account
@@ -72,7 +78,12 @@ export const PhoneField = ({ error, register }: FieldProps) => (
       Phone Number
     </label>
     <div className="flex items-center gap-3 rounded-full border border-[#eef1f0] bg-white px-4 py-2">
-      <Image src="/ethIcon.svg" width={25} height={25} alt="Ethiopia flag icon" />
+      <Image
+        src="/ethIcon.svg"
+        width={25}
+        height={25}
+        alt="Ethiopia flag icon"
+      />
       <Input
         id="phone"
         type="tel"

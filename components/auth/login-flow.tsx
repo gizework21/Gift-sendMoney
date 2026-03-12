@@ -5,8 +5,6 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Manrope } from "next/font/google";
-
 import { Button } from "@/components/ui/button";
 import { loginSchema } from "@/validations/auth-schema";
 import {
@@ -18,10 +16,7 @@ import {
   type LoginFormValues,
 } from "@/components/auth/login-flow-components";
 
-const manrope = Manrope({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
+export const componentType = "client";
 
 export type LoginStep = "phone" | "password";
 
@@ -112,15 +107,15 @@ export function LoginFlow({ initialStep = "phone" }: LoginFlowProps) {
 
   return (
     <main
-      className={`${manrope.className} min-h-screen min-w-full bg-white px-4 py-6 sm:p-6`}
+      className="min-h-screen min-w-full bg-white px-4 py-6 sm:p-6"
       onKeyDown={handleKeyDown}
     >
       <div className="mx-auto grid w-full min-h-[calc(100vh-48px)] max-w-full gap-6 overflow-hidden rounded-[40px] bg-white lg:grid-cols-2">
         <AuthHero />
 
-        <section className="flex min-h-full flex-col items-center justify-center bg-white px-6 py-10 shadow-lg sm:px-8 sm:py-12 lg:rounded-4xl lg:px-10 lg:py-16">
-          <div className="flex h-full flex-col items-center justify-center px-4 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
-            <div className="flex h-md w-full  md:max-w-[480px] flex-col justify-center rounded-[28px] border border-[#efefef] bg-white px-6 py-8 sm:max-w-[520px] sm:px-8 sm:py-10 lg:w-lg lg:max-w-none">
+        <section className="flex min-h-full flex-col items-center justify-center bg-white px-4 py-8 shadow-lg sm:px-8 sm:py-12 lg:rounded-4xl lg:px-10 lg:py-16">
+          <div className="flex h-full w-full flex-col items-center justify-center px-0 py-4 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
+            <div className="flex w-full max-w-[520px] flex-col justify-center rounded-[28px] border border-[#efefef] bg-white px-5 py-8 sm:max-w-[560px] sm:px-8 sm:py-10 lg:w-lg lg:max-w-none">
               <AuthCardHeader description={DESCRIPTION_BY_STEP[step]} />
 
               {loginError && (

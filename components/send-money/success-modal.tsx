@@ -1,8 +1,12 @@
+"use client";
+
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
 import Image from "next/image";
+
+export const componentType = "client";
 
 export type SuccessModalProps = {
   open: boolean;
@@ -31,8 +35,8 @@ export function SuccessModal({ open, onDone }: SuccessModalProps) {
     <Modal
       open={open}
       onClose={onDone}
-      containerClassName="justify-end items-start p-[30px]"
-      className="h-[calc(100vh-60px)] w-[94vw] max-w-155 overflow-auto rounded-4xl border-[#dbe8e1] bg-[#f4fff7] p-0 shadow-[0_30px_80px_rgba(10,90,60,0.25)]"
+      containerClassName="justify-end items-stretch p-0 sm:items-start sm:p-[30px]"
+      className="h-screen w-screen max-w-none overflow-auto rounded-none border-0 bg-[#f4fff7] p-0 shadow-none sm:h-[calc(100vh-60px)] sm:w-[94vw] sm:max-w-155 sm:rounded-4xl sm:border-[#dbe8e1] sm:shadow-[0_30px_80px_rgba(10,90,60,0.25)]"
     >
       <div className="flex flex-col justify-between h-full">
         <div className="p-6">

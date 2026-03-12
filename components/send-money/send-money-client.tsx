@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Manrope } from "next/font/google";
 
 import { BankListModal } from "@/components/send-money/bank-list-modal";
 import { ConfirmOrderModal } from "@/components/send-money/confirm-order-modal";
@@ -12,20 +11,24 @@ import { SendMoneyCalculator } from "@/components/send-money/send-money-calculat
 import { SendMoneyHeader } from "@/components/send-money/send-money-header";
 import { SendMoneyHero } from "@/components/send-money/send-money-hero";
 import { SuccessModal } from "@/components/send-money/success-modal";
-import { useSendMoneyStore } from "@/store/use-send-money-store";
 import { BANKS } from "@/lib/constants";
+import { useSendMoneyStore } from "@/store/use-send-money-store";
 
-const manrope = Manrope({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
+export const componentType = "client";
 
-const EXCHANGE_RATE = 165;
-const GIFT_RATE = 50;
-const MIN_USD_TRANSFER = 5;
-const PRESET_AMOUNTS = [10, 25, 50, 100, 200, 500, 1000];
+export type SendMoneyClientProps = {
+  exchangeRate: number;
+  giftRate: number;
+  minUsdTransfer: number;
+  presetAmounts: number[];
+};
 
-export default function Page() {
+export function SendMoneyClient({
+  exchangeRate,
+  giftRate,
+  minUsdTransfer,
+  presetAmounts,
+}: SendMoneyClientProps) {
   const [usdAmount, setUsdAmount] = useState(1);
   const [isBankModalOpen, setIsBankModalOpen] = useState(false);
   const [isReceiverModalOpen, setIsReceiverModalOpen] = useState(false);
@@ -43,8 +46,8 @@ export default function Page() {
     }
   }, [selectedBank, setSelectedBank]);
 
-  const giftAmount = usdAmount * GIFT_RATE;
-  const etbAmount = usdAmount * EXCHANGE_RATE;
+  const giftAmount = usdAmount * giftRate;
+  const etbAmount = usdAmount * exchangeRate;
   const totalAmount = etbAmount + giftAmount;
 
   const onUsdChange = (value: string) => {
@@ -111,22 +114,20 @@ export default function Page() {
   };
 
   return (
-    <main
-      className={`${manrope.className} min-h-screen bg-gradient-to-b from-[#EDFFED] to-white text-[#0b0b0b]`}
-    >
+    <>
       <div className="mx-auto max-w-full px-4 py-6 sm:p-6">
         <SendMoneyHeader />
 
-        <div className="mt-4 md:mt-20 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-0">
-          <SendMoneyHero exchangeRate={EXCHANGE_RATE} giftRate={GIFT_RATE} />
+        <div className="mt-4 grid gap-8 md:mt-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-0">
+          <SendMoneyHero exchangeRate={exchangeRate} giftRate={giftRate} />
           <SendMoneyCalculator
-            exchangeRate={EXCHANGE_RATE}
-            giftRate={GIFT_RATE}
-            minUsdTransfer={MIN_USD_TRANSFER}
+            exchangeRate={exchangeRate}
+            giftRate={giftRate}
+            minUsdTransfer={minUsdTransfer}
             usdAmount={usdAmount}
             etbAmount={etbAmount}
             totalAmount={totalAmount}
-            presets={PRESET_AMOUNTS}
+            presets={presetAmounts}
             onUsdChange={onUsdChange}
             onPresetSelect={setUsdAmount}
             onSendMoney={openBankModal}
@@ -172,6 +173,6 @@ export default function Page() {
         open={isSuccessModalOpen}
         onDone={() => setIsSuccessModalOpen(false)}
       />
-    </main>
+    </>
   );
 }

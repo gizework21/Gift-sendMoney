@@ -1,5 +1,7 @@
 import * as React from "react";
 
+export const componentType = "server";
+
 export type AuthLayoutProps = React.HTMLAttributes<HTMLDivElement>;
 
 export function AuthLayout({ className, ...props }: AuthLayoutProps) {

@@ -1,5 +1,7 @@
 import * as React from "react";
 
+export const componentType = "server";
+
 export type ActionCardProps = {
   title: string;
   description: string;

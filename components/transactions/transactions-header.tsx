@@ -1,5 +1,7 @@
 import { UserMenu } from "@/components/admin/user-menu";
 
+export const componentType = "server";
+
 export type TransactionsHeaderProps = {
   userName: string;
 };

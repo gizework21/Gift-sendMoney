@@ -3,6 +3,8 @@ import "./globals.css";
 import Providers from "./providers";
 import localFont from "next/font/local";
 
+export const componentType = "server";
+
 const outfit = localFont({
   src: [
     {

@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+export const componentType = "server";
+
 export function TransactionsToolbar() {
   return (
     <div className="mt-4 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-[#f9f9f9] p-4">

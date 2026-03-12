@@ -1,3 +1,5 @@
+import type { TransactionColumn } from "@/components/transactions/transactions-table";
+
 export const transactionColumns = [
   { key: "id", label: "Transaction ID" },
   { key: "senderName", label: "Sender Name" },
@@ -12,4 +14,4 @@ export const transactionColumns = [
   { key: "pickupStatus", label: "Pickup Status" },
   { key: "transactionDateTime", label: "Transaction Date & Time" },
   { key: "details", label: "Details" },
-] as const;
+] satisfies TransactionColumn[];

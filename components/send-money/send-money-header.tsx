@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 
 import {
@@ -8,6 +10,8 @@ import {
   TruckIcon,
 } from "./icons";
 import Image from "next/image";
+
+export const componentType = "client";
 
 export type SendMoneyHeaderProps = {
   onHelpClick?: () => void;

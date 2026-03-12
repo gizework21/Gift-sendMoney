@@ -1,4 +1,3 @@
-import { Manrope } from "next/font/google";
 import { getServerSession } from "next-auth";
 
 import { BackButton } from "@/components/ui/back-button";
@@ -10,17 +9,14 @@ import { AppFooter } from "@/components/ui/app-footer";
 import { transactionColumns } from "@/data/transactions";
 import { authOptions } from "@/lib/auth";
 
-const manrope = Manrope({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
+export const componentType = "server";
 
 export default async function Page() {
   const session = await getServerSession(authOptions);
   const displayName = session?.user?.name ?? "Solomon Kebede";
 
   return (
-    <main className={`${manrope.className} min-h-screen bg-[#efefef] p-6`}>
+    <main className="min-h-screen bg-[#efefef] p-6">
       <div className="mx-auto w-full max-w-[1400px] rounded-[28px] bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
         <TransactionsHeader userName={displayName} />
 

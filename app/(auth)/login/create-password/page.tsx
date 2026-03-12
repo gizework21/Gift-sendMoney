@@ -1,4 +1,4 @@
-
+export const componentType = "server";
 function page() {
   return (
     <div>page</div>

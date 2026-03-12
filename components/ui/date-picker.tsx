@@ -3,6 +3,8 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Select } from "@/components/ui/select";
 
+export const componentType = "server";
+
 const MONTHS = [
   "January",
   "February",

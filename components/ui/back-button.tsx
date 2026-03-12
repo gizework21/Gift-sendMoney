@@ -2,6 +2,8 @@
 
 import { useRouter } from "next/navigation";
 
+export const componentType = "client";
+
 export type BackButtonProps = {
   href: string;
 };

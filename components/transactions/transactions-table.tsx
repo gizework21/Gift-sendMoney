@@ -1,11 +1,14 @@
 "use client";
 
 import { useMemo } from "react";
+import { useRouter } from "next/navigation";
 
-import { useTransactions } from "@/hooks/use-transactions";
+import { useTransactions, type Transaction } from "@/hooks/use-transactions";
+
+export const componentType = "client";
 
 export type TransactionColumn = {
-  key: string;
+  key: keyof Transaction;
   label: string;
 };
 
@@ -18,11 +21,19 @@ function formatCell(value: unknown) {
   if (typeof value === "number") {
     return value.toLocaleString("en-US");
   }
-  return value ?? "-";
+  if (typeof value === "string") {
+    return value;
+  }
+  return "-";
+}
+
+function getCellValue(row: Transaction | { id: string }, key: keyof Transaction) {
+  return (row as Partial<Transaction>)[key];
 }
 
 export function TransactionsTable({ columns, rows = 10 }: TransactionsTableProps) {
   const { data, isLoading } = useTransactions();
+  const router = useRouter();
 
   const displayRows = useMemo(() => {
     if (isLoading || !data?.length) {
@@ -48,18 +59,28 @@ export function TransactionsTable({ columns, rows = 10 }: TransactionsTableProps
             </tr>
           </thead>
           <tbody>
-            {displayRows.map((row, index) => (
-              <tr key={row.id ?? `row-${index}`} className="rounded-2xl bg-[#f8f8f8]">
+            {displayRows.map((row, index) => {
+              const isPlaceholder = String(row.id ?? "").startsWith("empty-");
+              return (
+              <tr
+                key={row.id ?? `row-${index}`}
+                className={`rounded-2xl bg-[#f8f8f8] ${isPlaceholder ? "" : "cursor-pointer hover:bg-[#f1f5f3]"}`}
+                onClick={() => {
+                  if (!isPlaceholder && row.id) {
+                    router.push(`/transactions/${row.id}`);
+                  }
+                }}
+              >
                 {columns.map((column) => (
                   <td
                     key={`${column.key}-${index}`}
                     className="px-3 py-3 text-center text-[#7a8aa1]"
                   >
-                    {formatCell((row as Record<string, unknown>)[column.key])}
+                    {formatCell(getCellValue(row, column.key))}
                   </td>
                 ))}
               </tr>
-            ))}
+            )})}
           </tbody>
         </table>
       </div>

@@ -1,4 +1,3 @@
-import { Manrope } from "next/font/google";
 import { getServerSession } from "next-auth";
 
 import { ActionCard } from "@/components/admin/action-card";
@@ -7,17 +6,14 @@ import { AppFooter } from "@/components/ui/app-footer";
 import { adminActions } from "@/data/admin-actions";
 import { authOptions } from "@/lib/auth";
 
-const manrope = Manrope({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
+export const componentType = "server";
 
 export default async function Page() {
   const session = await getServerSession(authOptions);
   const displayName = session?.user?.name ?? "Solomon Kebede";
 
   return (
-    <main className={`${manrope.className} min-h-screen bg-[#f3f3f3]`}>
+    <main className="min-h-screen bg-[#f3f3f3]">
       <div className="w-full px-6 py-6">
         <AdminDashboardHeader userName={displayName} />
 

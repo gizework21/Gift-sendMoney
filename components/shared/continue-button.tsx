@@ -1,5 +1,7 @@
 import * as React from "react";
 
+export const componentType = "server";
+
 export type ContinueButtonProps = React.HTMLAttributes<HTMLDivElement>;
 
 export function ContinueButton({ className, ...props }: ContinueButtonProps) {
