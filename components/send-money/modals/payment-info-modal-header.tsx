@@ -15,7 +15,7 @@ function MastercardIcon() {
 
 export function PaymentInfoHeader({ onBack }: { onBack: () => void }) {
   return (
-    <div className="p-6">
+    <div className="px-6 pb-4 pt-6 sm:p-6">
       <div className="md:hidden">
         <button
           type="button"
@@ -27,7 +27,7 @@ export function PaymentInfoHeader({ onBack }: { onBack: () => void }) {
         </button>
       </div>
 
-      <div className="mt-4 md:mt-0">
+      <div className="mt-3 md:mt-0">
         <h2 className="text-2xl font-bold text-[#111]">Payment Informations</h2>
         <p className="mt-1 text-sm text-[#6d6d6d]">
           Please enter your information and pay for your merchant
@@ -72,7 +72,7 @@ export function PaymentInfoActions({
           onClick={onContinue}
           className="w-full rounded-2xl py-3 text-sm font-semibold"
         >
-          Continue
+          Pay For $ 300.00
         </Button>
       </div>
 
@@ -91,7 +91,7 @@ export function PaymentInfoActions({
           onClick={onContinue}
           className="rounded-2xl py-3 text-sm font-semibold"
         >
-          Continue
+          Pay For $ 300.00
         </Button>
       </div>
     </>

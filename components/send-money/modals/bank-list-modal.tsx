@@ -57,7 +57,7 @@ export function BankListModal({
           </p>
         </div>
 
-        <div className="mt-6 grid grid-cols-3 gap-3 sm:gap-4">
+        <div className="mt-4 grid grid-cols-3 gap-3 sm:mt-6 sm:gap-4">
           {banks.map((bank) => {
             const isActive = selectedBank === bank.name;
             return (

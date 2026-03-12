@@ -56,7 +56,7 @@ export function ReceiverAccountFields({
   register: ReceiverAccountRegister;
 }) {
   return (
-    <div className="mt-6 rounded-3xl border border-[#edf0ef] bg-white p-5 shadow-sm">
+    <div className="mt-4 rounded-3xl border border-[#edf0ef] bg-white p-5 shadow-sm sm:mt-6">
       <div className="space-y-2">
         <label className="text-xs font-semibold text-[#2a2a2a]">
           Receiver&apos;s Account Number

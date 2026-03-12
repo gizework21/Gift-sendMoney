@@ -21,7 +21,7 @@ function BackIconButton({ onClick }: { onClick: () => void }) {
 
 export function ModalIntro({ onBack }: { onBack: () => void }) {
   return (
-    <div className="flex flex-col items-center p-6 text-center">
+    <div className="flex flex-col items-center px-6 pb-4 pt-6 text-center sm:p-6">
       <div className="mb-4 flex w-full justify-start md:hidden">
         <BackIconButton onClick={onBack} />
       </div>

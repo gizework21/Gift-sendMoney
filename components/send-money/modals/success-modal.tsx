@@ -12,6 +12,10 @@ export type SuccessModalProps = {
 };
 
 export function SuccessModal({ open, onDone }: SuccessModalProps) {
+  const handleGetReceipt = () => {
+    window.print();
+  };
+
   return (
     <Modal
       open={open}
@@ -37,7 +41,7 @@ export function SuccessModal({ open, onDone }: SuccessModalProps) {
             </p>
           </div>
 
-          <div className="mt-6 space-y-5">
+          <div className="mt-4 space-y-5 sm:mt-6">
             <div className="flex items-center gap-3 rounded-2xl border border-[#edf0ef] bg-white px-4 py-3 shadow-sm">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#f4efe8]">
                 <span className="text-lg">💸</span>
@@ -101,15 +105,25 @@ export function SuccessModal({ open, onDone }: SuccessModalProps) {
           </div>
         </div>
 
-        <div className=" bg-white px-7 py-6">
-          <Button
-            type="button"
-            variant="primary"
-            onClick={onDone}
-            className="w-full py-4 text-sm font-semibold rounded-2xl"
-          >
-            Done
-          </Button>
+        <div className="bg-white px-7 py-6">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <Button
+              type="button"
+              variant="primaryOutline"
+              onClick={onDone}
+              className="flex-1 py-4 text-sm font-semibold"
+            >
+              Back to Home
+            </Button>
+            <Button
+              type="button"
+              variant="primary"
+              onClick={handleGetReceipt}
+              className="flex-1 rounded-2xl py-4 text-sm font-semibold"
+            >
+              Get Receipt
+            </Button>
+          </div>
         </div>
       </div>
     </Modal>

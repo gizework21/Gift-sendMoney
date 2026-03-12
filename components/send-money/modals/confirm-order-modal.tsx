@@ -59,7 +59,7 @@ export function ConfirmOrderModal({
             </p>
           </div>
 
-          <div className="mt-6 space-y-5 p-6">
+          <div className="mt-4 space-y-5 p-6 sm:mt-6">
             <div>
               <p className="text-xs font-semibold text-[#2a2a2a]">Gift Info.</p>
               <div className="mt-2 flex items-center gap-3 rounded-2xl border border-[#edf0ef] bg-white px-4 py-3 shadow-sm">

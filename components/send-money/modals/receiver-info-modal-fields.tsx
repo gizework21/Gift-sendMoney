@@ -39,7 +39,7 @@ export function ReceiverInfoFields({
   fieldClass: FieldClassNameResolver;
 }) {
   return (
-    <div className="mt-6 p-6">
+    <div className="mt-4 p-6 sm:mt-6">
       <input type="hidden" {...register("contactPreference")} />
       <div className="rounded-3xl border border-[#edf0ef] bg-white p-5 shadow-sm">
         <SelectedBankCard selectedBank={selectedBank} />
