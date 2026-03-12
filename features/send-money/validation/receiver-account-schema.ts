@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-import type { ReceiverAccount } from "@/features/send-money/store/use-send-money-store";
+import type { ReceiverAccount } from "@/features/send-money/send-money.types";
 
 export const receiverAccountSchema: yup.ObjectSchema<ReceiverAccount> = yup.object({
   accountNumber: yup

@@ -63,6 +63,8 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 export type ToastProps = React.HTMLAttributes<HTMLDivElement> & {
+  title?: React.ReactNode;
+  description?: React.ReactNode;
   variant?: "default" | "destructive";
 };
 

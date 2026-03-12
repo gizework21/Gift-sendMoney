@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-import type { ReceiverInfo } from "@/features/send-money/store/use-send-money-store";
+import type { ReceiverInfo } from "@/features/send-money/send-money.types";
 
 export const receiverInfoSchema: yup.ObjectSchema<ReceiverInfo> = yup.object({
   receiverName: yup.string().required("Receiver name is required"),
