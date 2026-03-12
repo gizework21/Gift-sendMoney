@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 import { Select } from "@/components/ui/select";
+import type { MonthSelectProps, YearSelectProps } from "@/types/ui";
 
 const MONTHS = [
   "January",
@@ -17,10 +18,6 @@ const MONTHS = [
   "November",
   "December",
 ];
-
-export type MonthSelectProps = React.SelectHTMLAttributes<HTMLSelectElement> & {
-  startAt?: number;
-};
 
 export function MonthSelect({
   className,
@@ -44,11 +41,6 @@ export function MonthSelect({
     </Select>
   );
 }
-
-export type YearSelectProps = React.SelectHTMLAttributes<HTMLSelectElement> & {
-  startYear?: number;
-  endYear?: number;
-};
 
 export function YearSelect({
   className,

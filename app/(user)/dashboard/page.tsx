@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 
-import { AdminDashboardHeader } from "@/components/admin/admin-dashboard-header";
-import { DashboardActions } from "@/components/admin/dashboard-actions";
+import { AdminDashboardHeader } from "@/features/admin/components/admin-dashboard-header";
+import { DashboardActions } from "@/features/admin/components/dashboard-actions";
 import { AppFooter } from "@/components/ui/app-footer";
 import { authOptions } from "@/lib/auth";
 

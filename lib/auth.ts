@@ -1,32 +1,7 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-
-export type AuthUser = {
-  id: string;
-  name?: string;
-  phone?: string;
-  email?: string;
-  role?: "user" | "admin";
-};
-
-const MOCK_USERS: Array<AuthUser & { password: string }> = [
-  {
-    id: "user_1",
-    name: "Admin User",
-    email: "demo@gift.et",
-    phone: "0929272814",
-    role: "admin",
-    password: "12345678",
-  },
-  {
-    id: "admin_1",
-    name: "Admin User",
-    email: "admin@gift.et",
-    phone: "+251900000002",
-    role: "admin",
-    password: "admin123",
-  },
-];
+import { MOCK_USERS } from "@/features/auth/auth.constants";
+import type { AuthUser } from "@/features/auth/auth.types";
 
 export const authOptions: NextAuthOptions = {
   session: {

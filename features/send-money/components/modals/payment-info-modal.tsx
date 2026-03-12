@@ -1,0 +1,79 @@
+"use client";
+
+import * as React from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+
+import { Modal } from "@/components/ui/modal";
+import {
+  PaymentMethodCard,
+  BillingAddressCard,
+} from "@/features/send-money/components/modals/payment-info-modal-cards";
+import {
+  PaymentAmountCard,
+  PaymentInfoActions,
+  PaymentInfoHeader,
+} from "@/features/send-money/components/modals/payment-info-modal-header";
+import {
+  useSendMoneyStore,
+} from "@/features/send-money/store/use-send-money-store";
+import type { PaymentInfo, PaymentInfoModalProps } from "@/features/send-money/send-money.types";
+import { paymentSchema } from "@/features/send-money/validation/payment-schema";
+
+export const componentType = "client";
+
+export function PaymentInfoModal({
+  open,
+  onBack,
+  onContinue,
+}: PaymentInfoModalProps) {
+  const paymentInfo = useSendMoneyStore((state) => state.paymentInfo);
+  const setPaymentInfo = useSendMoneyStore((state) => state.setPaymentInfo);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<PaymentInfo>({
+    resolver: yupResolver(paymentSchema),
+    defaultValues: paymentInfo,
+    mode: "onBlur",
+  });
+
+  React.useEffect(() => {
+    if (open) {
+      reset(paymentInfo);
+    }
+  }, [open, paymentInfo, reset]);
+
+  const onSubmit = async (data: PaymentInfo) => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setPaymentInfo(data);
+    onContinue();
+  };
+
+  return (
+    <Modal
+      open={open}
+      onClose={onBack}
+      containerClassName="justify-end items-stretch p-0 sm:items-start sm:p-[30px]"
+      className="h-dvh w-screen max-w-none overflow-hidden rounded-none border-0 bg-[#f4fff7] p-0 shadow-none sm:h-[calc(100vh-60px)] sm:w-[94vw] sm:max-w-155 sm:overflow-auto sm:rounded-4xl sm:border-[#dbe8e1] sm:shadow-[0_30px_80px_rgba(10,90,60,0.25)]"
+    >
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex h-full min-h-0 flex-col"
+      >
+        <div className="min-h-0 flex-1 overflow-y-auto">
+          <PaymentInfoHeader onBack={onBack} />
+          <div className="space-y-5 px-6 pb-6">
+            <PaymentAmountCard />
+            <PaymentMethodCard errors={errors} register={register} />
+            <BillingAddressCard errors={errors} register={register} />
+          </div>
+        </div>
+
+        <PaymentInfoActions isLoading={isSubmitting} onBack={onBack} />
+      </form>
+    </Modal>
+  );
+}

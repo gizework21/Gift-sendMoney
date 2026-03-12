@@ -3,14 +3,7 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
-
-export type ModalProps = {
-  open?: boolean;
-  onClose?: () => void;
-  children: React.ReactNode;
-  className?: string;
-  containerClassName?: string;
-};
+import type { ModalProps } from "@/types/ui";
 
 export function Modal({
   open = false,

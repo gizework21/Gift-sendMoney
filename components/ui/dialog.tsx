@@ -3,12 +3,7 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
-
-export type DialogProps = {
-  open?: boolean;
-  onClose?: () => void;
-  children: React.ReactNode;
-};
+import type { DialogProps } from "@/types/ui";
 
 export function Dialog({ open = false, onClose, children }: DialogProps) {
   if (!open) return null;

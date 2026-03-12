@@ -1,5 +1,5 @@
-import { SendMoneyClient } from "@/components/send-money/send-money-client";
-import { BANKS } from "@/lib/constants";
+import { SendMoneyClient } from "@/features/send-money/components/send-money-client";
+import { BANKS } from "@/features/send-money/send-money.constants";
 import { getExchangeRate } from "@/lib/exchange-rate";
 
 export default async function Home() {

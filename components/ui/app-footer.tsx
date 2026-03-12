@@ -1,8 +1,4 @@
-import * as React from "react";
-
-export type AppFooterProps = {
-  className?: string;
-};
+import type { AppFooterProps } from "@/types/ui";
 
 export function AppFooter({ className }: AppFooterProps) {
   return (

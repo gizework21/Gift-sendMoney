@@ -1,7 +1,8 @@
 import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
+import type { ToastProps } from "@/types/ui";
 
 const toastVariants = cva(
   "group pointer-events-auto relative flex w-full items-start gap-3 overflow-hidden rounded-lg border p-4 shadow-lg",
@@ -18,12 +19,6 @@ const toastVariants = cva(
     },
   },
 );
-
-export type ToastProps = React.HTMLAttributes<HTMLDivElement> &
-  VariantProps<typeof toastVariants> & {
-    title?: string;
-    description?: string;
-  };
 
 export function Toast({
   title,

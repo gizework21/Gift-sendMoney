@@ -1,8 +1,7 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
-
-export type SelectProps = React.SelectHTMLAttributes<HTMLSelectElement>;
+import type { SelectProps } from "@/types/ui";
 
 export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   function Select({ className, ...props }, ref) {

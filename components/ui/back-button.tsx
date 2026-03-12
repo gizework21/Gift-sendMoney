@@ -1,9 +1,6 @@
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
-
-export type BackButtonProps = {
-  href: string;
-};
+import type { BackButtonProps } from "@/types/ui";
 
 export function BackButton({ href }: BackButtonProps) {
 

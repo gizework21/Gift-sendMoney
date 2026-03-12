@@ -1,11 +1,11 @@
 import { getServerSession } from "next-auth";
 import { BackButton } from "@/components/ui/back-button";
-import { TransactionsHeader } from "@/components/transactions/transactions-header";
-import { TransactionsPagination } from "@/components/transactions/transactions-pagination";
-import { TransactionsTable } from "@/components/transactions/transactions-table";
-import { TransactionsToolbar } from "@/components/transactions/transactions-toolbar";
+import { TransactionsHeader } from "@/features/transactions/components/transactions-header";
+import { TransactionsPagination } from "@/features/transactions/components/transactions-pagination";
+import { TransactionsTable } from "@/features/transactions/components/transactions-table";
+import { TransactionsToolbar } from "@/features/transactions/components/transactions-toolbar";
 import { AppFooter } from "@/components/ui/app-footer";
-import { transactionColumns } from "@/data/transactions";
+import { TRANSACTION_COLUMNS } from "@/features/transactions/transactions.constants";
 import { authOptions } from "@/lib/auth";
 
 export default async function Page() {
@@ -33,7 +33,7 @@ export default async function Page() {
           </div>
 
           <TransactionsToolbar />
-          <TransactionsTable columns={transactionColumns} rows={10} />
+          <TransactionsTable columns={TRANSACTION_COLUMNS} rows={10} />
           <TransactionsPagination />
         </section>
 

@@ -2,8 +2,7 @@ import * as React from "react";
 import { LoaderCircle } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-
-export type LoadingSpinnerProps = React.HTMLAttributes<HTMLDivElement>;
+import type { LoadingSpinnerProps } from "@/types/ui";
 
 export function LoadingSpinner({
   className,

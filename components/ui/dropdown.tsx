@@ -3,12 +3,7 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
-
-export type DropdownProps = {
-  trigger: React.ReactNode;
-  children: React.ReactNode;
-  align?: "left" | "right";
-};
+import type { DropdownProps } from "@/types/ui";
 
 export function Dropdown({
   trigger,

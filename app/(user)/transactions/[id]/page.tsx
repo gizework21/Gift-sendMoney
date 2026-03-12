@@ -3,15 +3,12 @@ import { notFound } from "next/navigation";
 
 import {
   TransactionDetailsView,
-} from "@/components/transactions/transaction-details-view";
+} from "@/features/transactions/components/transaction-details-view";
+import { getTransactionById } from "@/features/transactions/transactions.constants";
 import { authOptions } from "@/lib/auth";
-import { getTransactionById } from "@/lib/transactions";
+import type { TransactionDetailsPageProps } from "@/features/transactions/transactions.types";
 
-type PageProps = {
-  params: Promise<{ id: string }>;
-};
-
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: TransactionDetailsPageProps) {
   const { id } = await params;
   const session = await getServerSession(authOptions);
   const transaction = getTransactionById(id);

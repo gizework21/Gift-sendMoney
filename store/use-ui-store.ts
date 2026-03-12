@@ -1,9 +1,5 @@
 import { create } from "zustand";
-
-type UiState = {
-  isLoading: boolean;
-  setLoading: (isLoading: boolean) => void;
-};
+import type { UiState } from "@/types/store";
 
 export const useUiStore = create<UiState>((set) => ({
   isLoading: false,

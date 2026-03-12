@@ -1,19 +1,6 @@
 import { create } from "zustand";
-
-export type ToastVariant = "default" | "destructive";
-
-export type ToastMessage = {
-  id: string;
-  title?: string;
-  description?: string;
-  variant?: ToastVariant;
-};
-
-type ToastState = {
-  toasts: ToastMessage[];
-  addToast: (toast: Omit<ToastMessage, "id">) => string;
-  removeToast: (id: string) => void;
-};
+import type { ToastState } from "@/types/store";
+import type { ToastMessage } from "@/types/toast";
 
 const AUTO_DISMISS_MS = 3000;
 

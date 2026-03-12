@@ -1,0 +1,110 @@
+"use client";
+import { useState } from "react";
+import { Modal } from "@/components/ui/modal";
+import { ModalFooter } from "@/features/send-money/components/modals/modal-footer";
+import Image from "next/image";
+import { ChevronLeft } from "lucide-react";
+import type { BankListModalProps } from "@/features/send-money/send-money.types";
+
+export function BankListModal({
+  open,
+  banks,
+  selectedBank,
+  onSelectBank,
+  onClose,
+  onContinue,
+}: BankListModalProps) {
+  const [isContinuing, setIsContinuing] = useState(false);
+
+  const handleContinue = async () => {
+    if (!selectedBank || isContinuing) return;
+
+    setIsContinuing(true);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsContinuing(false);
+    onContinue();
+  };
+
+  return (
+    <Modal
+      open={open}
+      onClose={onClose}
+      containerClassName="justify-end items-stretch p-0 sm:items-start sm:p-[30px]"
+      className="h-dvh w-screen max-w-none overflow-hidden rounded-none border-0 bg-[#f4fff7] p-0 shadow-none sm:h-[calc(100vh-60px)] sm:w-[94vw] sm:max-w-140 sm:overflow-auto sm:rounded-4xl sm:border-[#dbe8e1] sm:shadow-[0_30px_80px_rgba(10,90,60,0.25)]"
+    >
+      <div className="flex min-h-0 flex-1 flex-col overflow-y-auto p-5 sm:p-6">
+        <div className="md:hidden">
+          <button
+            type="button"
+            onClick={onClose}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white bg-white shadow-sm"
+            aria-label="Go back"
+          >
+            <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+          </button>
+        </div>
+
+        <div className="mt-4 md:mt-0">
+          <h2 className="text-lg font-bold text-[#111] sm:text-2xl">
+            Banks List
+          </h2>
+          <p className="mt-1 text-sm text-[#6d6d6d]">
+            Select From the listed banks and send cash gift.
+          </p>
+        </div>
+
+        <div className="mt-4 grid grid-cols-3 gap-3 sm:mt-6 sm:gap-4">
+          {banks.map((bank) => {
+            const isActive = selectedBank === bank.name;
+            return (
+              <button
+                key={bank.name}
+                type="button"
+                onClick={() => onSelectBank(bank.name)}
+                className={`rounded-[22px] border border-white bg-white px-3 py-4 text-center shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition ${
+                  isActive
+                    ? "ring-2 ring-(--color-primary)"
+                    : "border-transparent"
+                }`}
+              >
+                {bank.logoUrl ? (
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white">
+                    <Image
+                      src={bank.logoUrl}
+                      alt={`${bank.name} logo`}
+                      width={48}
+                      height={48}
+                      className="object-contain"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="mx-auto flex h-12 w-12 items-center justify-center rounded-full text-xs font-bold text-white"
+                    style={{ backgroundColor: bank.color }}
+                  >
+                    {bank.initials}
+                  </div>
+                )}
+                <p className="mt-2 text-xs font-semibold text-[#1c1c1c]">
+                  {bank.name}
+                </p>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <ModalFooter
+        desktopContainerClassName="mt-6 px-7 py-4"
+        isLoading={isContinuing}
+        primaryAction={{ label: "Continue", onClick: handleContinue }}
+        secondaryAction={{
+          label: "Back",
+          onClick: onClose,
+          variant: "primaryOutline",
+          className: "text-[#111]",
+        }}
+      />
+    </Modal>
+  );
+}
