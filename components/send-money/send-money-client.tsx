@@ -27,9 +27,7 @@ export function SendMoneyClient({
   const { data: exchangeRateData = initialExchangeRate } =
     useExchangeRate(initialExchangeRate);
 
-  const [usdAmount, setUsdAmount] = useState(
-    exchangeRateData.minUsdTransfer,
-  );
+  const [usdAmount, setUsdAmount] = useState(exchangeRateData.minUsdTransfer);
 
   const selectedBank = useSendMoneyStore((state) => state.selectedBank);
   const setSelectedBank = useSendMoneyStore((state) => state.setSelectedBank);
@@ -38,8 +36,12 @@ export function SendMoneyClient({
     (state) => state.setTransferSummary,
   );
 
-  const { rate: exchangeRate, giftRate, minUsdTransfer, presetAmounts } =
-    exchangeRateData;
+  const {
+    rate: exchangeRate,
+    giftRate,
+    minUsdTransfer,
+    presetAmounts,
+  } = exchangeRateData;
 
   useEffect(() => {
     if (!selectedBank && banks[0]?.name) {

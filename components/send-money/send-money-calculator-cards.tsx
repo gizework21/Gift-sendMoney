@@ -37,7 +37,9 @@ function AmountCard({
         {value}
         <div className="flex items-center gap-2 rounded-full bg-[#f2f2f2] px-4 py-2">
           <Image src={iconSrc} width={25} height={5} alt={`${currency} icon`} />
-          <span className="text-sm font-semibold text-[#1c1c1c]">{currency}</span>
+          <span className="text-sm font-semibold text-[#1c1c1c]">
+            {currency}
+          </span>
         </div>
       </div>
       <div className="mt-4 flex items-center gap-2 text-xs font-medium text-(--color-primary)">
