@@ -117,7 +117,7 @@ export function ReceiverAccountActions({ onBack }: { onBack: () => void }) {
         <Button
           type="submit"
           variant="primary"
-          className="w-full rounded-2xl py-3 text-sm font-semibold"
+          className="w-full rounded-2xl py-3 text-sm font-semibold md:py-5"
         >
           Continue
         </Button>
@@ -128,14 +128,14 @@ export function ReceiverAccountActions({ onBack }: { onBack: () => void }) {
           type="button"
           variant="primaryOutline"
           onClick={onBack}
-          className="py-3 text-sm font-semibold text-[#111]"
+          className="py-3 text-sm font-semibold text-[#111] md:py-5"
         >
           Back
         </Button>
         <Button
           type="submit"
           variant="primary"
-          className="rounded-2xl py-3 text-sm font-semibold"
+          className="rounded-2xl py-3 text-sm font-semibold md:py-5"
         >
           Continue
         </Button>

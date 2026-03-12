@@ -70,7 +70,7 @@ export function PaymentInfoActions({
           type="button"
           variant="primary"
           onClick={onContinue}
-          className="w-full rounded-2xl py-3 text-sm font-semibold"
+          className="w-full rounded-2xl py-3 text-sm font-semibold md:py-5"
         >
           Pay For $ 300.00
         </Button>
@@ -81,7 +81,7 @@ export function PaymentInfoActions({
           type="button"
           variant="primaryOutline"
           onClick={onBack}
-          className="py-3 text-sm font-semibold text-[#111]"
+          className="py-3 text-sm font-semibold text-[#111] md:py-5"
         >
           Back
         </Button>
@@ -89,7 +89,7 @@ export function PaymentInfoActions({
           type="button"
           variant="primary"
           onClick={onContinue}
-          className="rounded-2xl py-3 text-sm font-semibold"
+          className="rounded-2xl py-3 text-sm font-semibold md:py-5"
         >
           Pay For $ 300.00
         </Button>

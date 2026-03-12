@@ -4,6 +4,7 @@ import { ChevronLeft, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
 import { useSendMoneyStore } from "@/store/use-send-money-store";
+import Image from "next/image";
 
 
 export type ConfirmOrderModalProps = {
@@ -50,7 +51,7 @@ export function ConfirmOrderModal({
           </div>
 
           <div className="flex flex-col items-center text-center">
-            <DocumentIcon />
+            <Image src={"/doc.svg"} width={150} height={150} alt="icon"/>
             <h2 className="mt-3 text-xl font-bold text-[#111]">
               Confirm Order Information
             </h2>
@@ -114,7 +115,7 @@ export function ConfirmOrderModal({
             type="button"
             variant="primary"
             onClick={onContinue}
-            className="w-full py-3 text-sm font-semibold rounded-2xl"
+            className="w-full rounded-2xl py-3 text-sm font-semibold md:py-5"
           >
             Continue
           </Button>
@@ -125,7 +126,7 @@ export function ConfirmOrderModal({
             type="button"
             variant="primaryOutline"
             onClick={onBack}
-            className="py-3 text-sm font-semibold text-[#111]"
+            className="py-3 text-sm font-semibold text-[#111] md:py-5"
           >
             Back
           </Button>
@@ -133,7 +134,7 @@ export function ConfirmOrderModal({
             type="button"
             variant="primary"
             onClick={onContinue}
-            className="py-3 text-sm font-semibold rounded-2xl"
+            className="rounded-2xl py-3 text-sm font-semibold md:py-5"
           >
             Continue
           </Button>

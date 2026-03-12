@@ -103,7 +103,7 @@ export function BankListModal({
           type="button"
           variant="primary"
           onClick={onContinue}
-          className="w-full py-3 text-sm font-semibold rounded-2xl"
+          className="w-full rounded-2xl py-3 text-sm font-semibold md:py-5"
         >
           Continue
         </Button>
@@ -114,7 +114,7 @@ export function BankListModal({
           type="button"
           variant="primaryOutline"
           onClick={onClose}
-          className="py-3 text-sm font-semibold text-[#111]"
+          className="py-3 text-sm font-semibold text-[#111] md:py-5"
         >
           Back
         </Button>
@@ -122,7 +122,7 @@ export function BankListModal({
           type="button"
           variant="primary"
           onClick={onContinue}
-          className="py-3 text-sm font-semibold rounded-2xl"
+          className="rounded-2xl py-3 text-sm font-semibold md:py-5"
         >
           Continue
         </Button>

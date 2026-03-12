@@ -111,7 +111,7 @@ export function SuccessModal({ open, onDone }: SuccessModalProps) {
               type="button"
               variant="primaryOutline"
               onClick={onDone}
-              className="flex-1 py-4 text-sm font-semibold"
+              className="flex-1 py-3 text-sm font-semibold md:py-5"
             >
               Back to Home
             </Button>
@@ -119,7 +119,7 @@ export function SuccessModal({ open, onDone }: SuccessModalProps) {
               type="button"
               variant="primary"
               onClick={handleGetReceipt}
-              className="flex-1 rounded-2xl py-4 text-sm font-semibold"
+              className="flex-1 rounded-2xl py-3 text-sm font-semibold md:py-5"
             >
               Get Receipt
             </Button>
