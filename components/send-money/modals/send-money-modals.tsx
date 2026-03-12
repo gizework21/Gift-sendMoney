@@ -6,22 +6,23 @@ import { PaymentInfoModal } from "@/components/send-money/modals/payment-info-mo
 import { ReceiverAccountModal } from "@/components/send-money/modals/receiver-account-modal";
 import { ReceiverInfoModal } from "@/components/send-money/modals/receiver-info-modal";
 import { SuccessModal } from "@/components/send-money/modals/success-modal";
-import { BANKS } from "@/lib/constants";
+import type { BankOption } from "@/lib/constants";
 import { useSendMoneyStore } from "@/store/use-send-money-store";
 
 export const componentType = "client";
 
-export function SendMoneyModals() {
+export function SendMoneyModals({ banks }: { banks: BankOption[] }) {
   const openStep = useSendMoneyStore((state) => state.openStep);
   const selectedBank = useSendMoneyStore((state) => state.selectedBank);
   const setSelectedBank = useSendMoneyStore((state) => state.setSelectedBank);
   const setOpenStep = useSendMoneyStore((state) => state.setOpenStep);
+  const finalizeTransfer = useSendMoneyStore((state) => state.finalizeTransfer);
 
   return (
     <>
       <BankListModal
         open={openStep === "bank"}
-        banks={BANKS}
+        banks={banks}
         selectedBank={selectedBank}
         onSelectBank={setSelectedBank}
         onClose={() => setOpenStep(null)}
@@ -50,7 +51,10 @@ export function SendMoneyModals() {
       <PaymentInfoModal
         open={openStep === "payment"}
         onBack={() => setOpenStep("confirm")}
-        onContinue={() => setOpenStep("success")}
+        onContinue={() => {
+          finalizeTransfer();
+          setOpenStep("success");
+        }}
       />
 
       <SuccessModal open={openStep === "success"} onDone={() => setOpenStep(null)} />

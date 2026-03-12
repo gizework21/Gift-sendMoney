@@ -8,24 +8,11 @@ import {
   TransactionSummaryBar,
 } from "@/components/transactions/transaction-details-sections";
 import { AppFooter } from "@/components/ui/app-footer";
+import type { TransactionRecord } from "@/lib/transactions";
 
 export const componentType = "server";
 
-export type TransactionDetails = {
-  id: string;
-  senderName: string;
-  senderPhone: string;
-  recipientName: string;
-  recipientPhone: string;
-  amountUsd: number;
-  exchangeRate: number;
-  amountEtb: number;
-  pickupBranch: string;
-  transactionStatus: string;
-  pickupStatus: string;
-  transactionDateTime: string;
-  details: string;
-};
+export type TransactionDetails = TransactionRecord;
 
 type TransactionDetailsViewProps = {
   transaction: TransactionDetails;
@@ -47,8 +34,11 @@ export function TransactionDetailsView({
 
   const recipientItems = [
     { label: "Recipient Name:", value: transaction.recipientName },
-    { label: "Bank Name", value: "Dashen Bank" },
-    { label: "Recipient Account Number:", value: "100034767337676" },
+    { label: "Bank Name", value: transaction.recipientBankName },
+    {
+      label: "Recipient Account Number:",
+      value: transaction.recipientAccountNumber,
+    },
   ];
 
   const amountItems = [
@@ -69,7 +59,7 @@ export function TransactionDetailsView({
   const metaItems = [
     {
       label: "Net Amount to Merchant:",
-      value: `${formatMoney(transaction.amountEtb - 10)} ETB`,
+      value: `${formatMoney(transaction.netAmountToMerchant)} ETB`,
     },
     {
       label: "Transaction Date & Time",

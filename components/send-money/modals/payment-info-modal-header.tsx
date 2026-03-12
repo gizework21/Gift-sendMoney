@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 import { ChevronLeft } from "lucide-react";
 
 import { ModalFooter } from "@/components/send-money/modals/modal-footer";
+import { useSendMoneyStore } from "@/store/use-send-money-store";
 
 export const componentType = "client";
 
@@ -38,6 +39,8 @@ export function PaymentInfoHeader({ onBack }: { onBack: () => void }) {
 }
 
 export function PaymentAmountCard() {
+  const usdAmount = useSendMoneyStore((state) => state.transferSummary.usdAmount);
+
   return (
     <div className="rounded-3xl border border-[#edf0ef] bg-white p-5 shadow-sm">
       <div className="flex items-center justify-between">
@@ -45,7 +48,9 @@ export function PaymentAmountCard() {
           <p className="text-xs font-semibold text-[#2a2a2a]">
             Payment Amount
           </p>
-          <p className="mt-1 text-lg font-bold text-[#111]">$ 281.25</p>
+          <p className="mt-1 text-lg font-bold text-[#111]">
+            $ {usdAmount.toFixed(2)}
+          </p>
         </div>
         <div className="text-right">
           <MastercardIcon />
@@ -63,9 +68,14 @@ export function PaymentInfoActions({
   onBack: () => void;
   onContinue: () => void;
 }) {
+  const usdAmount = useSendMoneyStore((state) => state.transferSummary.usdAmount);
+
   return (
     <ModalFooter
-      primaryAction={{ label: "Pay For $ 300.00", onClick: onContinue }}
+      primaryAction={{
+        label: `Pay For $ ${usdAmount.toFixed(2)}`,
+        onClick: onContinue,
+      }}
       secondaryAction={{
         label: "Back",
         onClick: onBack,

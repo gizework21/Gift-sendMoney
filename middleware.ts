@@ -10,7 +10,6 @@ export default withAuth(
     const isApiAuthRoute = pathname.startsWith("/api/auth");
     const isStaticAsset =
       pathname.startsWith("/_next") || pathname === "/favicon.ico";
-    const isSendMoneyRoute = pathname.startsWith("/send-money");
     const isDashboardRoute = pathname.startsWith("/dashboard");
     const isAdminRoute = pathname.startsWith("/admin");
     const isTransactionsRoute = pathname.startsWith("/transactions");

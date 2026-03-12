@@ -2,9 +2,26 @@ export const DEFAULT_CURRENCY = "USD";
 export const DEFAULT_LOCALE = "en-US";
 export const SUPPORTED_CURRENCIES = ["USD", "ETB"] as const;
 
-export const BANKS = [
-  { name: "Amhara Bank", initials: "A", color: "#1f6bd6", logoUrl: "/ama.png" },
-  { name: "Zemen Bank", initials: "Z", color: "#e43b4d", logoUrl: "/zemen.png" },
+export type BankOption = {
+  name: string;
+  initials: string;
+  color: string;
+  logoUrl?: string;
+};
+
+export const BANKS: BankOption[] = [
+  {
+    name: "Amhara Bank",
+    initials: "A",
+    color: "#1f6bd6",
+    logoUrl: "/ama.png",
+  },
+  {
+    name: "Zemen Bank",
+    initials: "Z",
+    color: "#e43b4d",
+    logoUrl: "/zemen.png",
+  },
   {
     name: "Lion Bank",
     initials: "L",
@@ -71,7 +88,12 @@ export const BANKS = [
     color: "#0f7b79",
     logoUrl: "/awash.png",
   },
-  { name: "Nib Bank", initials: "N", color: "#d28b19", logoUrl: "/awash.png" },
+  {
+    name: "Nib Bank",
+    initials: "N",
+    color: "#d28b19",
+    logoUrl: "/awash.png",
+  },
   {
     name: "Abay Bank",
     initials: "AB",
@@ -80,7 +102,7 @@ export const BANKS = [
   },
 ];
 
- export const COUNTRIES = [
+export const COUNTRIES = [
   "Ethiopia",
   "United States",
   "United Kingdom",

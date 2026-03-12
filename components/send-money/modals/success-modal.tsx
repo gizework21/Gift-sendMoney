@@ -1,9 +1,8 @@
 "use client";
 
-import * as React from "react";
-
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
+import { useSendMoneyStore } from "@/store/use-send-money-store";
 import Image from "next/image";
 
 export type SuccessModalProps = {
@@ -12,9 +11,22 @@ export type SuccessModalProps = {
 };
 
 export function SuccessModal({ open, onDone }: SuccessModalProps) {
+  const selectedBank = useSendMoneyStore((state) => state.selectedBank);
+  const receiverInfo = useSendMoneyStore((state) => state.receiverInfo);
+  const receiverAccount = useSendMoneyStore((state) => state.receiverAccount);
+  const transferSummary = useSendMoneyStore((state) => state.transferSummary);
+
   const handleGetReceipt = () => {
     window.print();
   };
+
+  const completedDate = transferSummary.completedAt
+    ? new Intl.DateTimeFormat("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      }).format(new Date(transferSummary.completedAt))
+    : "Pending";
 
   return (
     <Modal
@@ -47,7 +59,9 @@ export function SuccessModal({ open, onDone }: SuccessModalProps) {
                 <span className="text-lg">💸</span>
               </div>
               <div>
-                <p className="text-sm font-semibold text-[#1c1c1c]">$ 300.00</p>
+                <p className="text-sm font-semibold text-[#1c1c1c]">
+                  $ {transferSummary.usdAmount.toFixed(2)}
+                </p>
                 <p className="text-xs text-[#9b9b9b]">Cash Gift</p>
               </div>
             </div>
@@ -62,44 +76,44 @@ export function SuccessModal({ open, onDone }: SuccessModalProps) {
                 <div className="flex items-center justify-between">
                   <span>Sender name:</span>
                   <span className="font-semibold text-[#1c1c1c]">
-                    Solomon Kebede
+                    {receiverAccount.senderName || receiverInfo.senderName || "Sender"}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Receiver Name:</span>
                   <span className="font-semibold text-[#1c1c1c]">
-                    Samson Ketema
+                    {receiverInfo.receiverName || "Receiver"}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Receiver Account:</span>
                   <span className="font-semibold text-[#1c1c1c]">
-                    100093462424242
+                    {receiverAccount.accountNumber || "Not provided"}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Bank Name:</span>
                   <span className="font-semibold text-[#1c1c1c]">
-                    Dashen Bank
+                    {selectedBank || "Not selected"}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Payment Reference:</span>
                   <span className="font-semibold text-[#1c1c1c]">
-                    FTX-98237424
+                    {transferSummary.paymentReference || "Pending"}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Date:</span>
                   <span className="font-semibold text-[#1c1c1c]">
-                    May 12, 2024
+                    {completedDate}
                   </span>
                 </div>
               </div>
 
               <div className="mt-4 flex items-center justify-between text-sm font-semibold text-[#111]">
                 <span>Total</span>
-                <span>$ 281.25</span>
+                <span>$ {transferSummary.usdAmount.toFixed(2)}</span>
               </div>
             </div>
           </div>

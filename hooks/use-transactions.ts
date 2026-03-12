@@ -1,20 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 
-export type Transaction = {
-  id: string;
-  senderName: string;
-  senderPhone: string;
-  recipientName: string;
-  recipientPhone: string;
-  amountUsd: number;
-  exchangeRate: number;
-  amountEtb: number;
-  pickupBranch: string;
-  transactionStatus: string;
-  pickupStatus: string;
-  transactionDateTime: string;
-  details: string;
-};
+import type { TransactionRecord } from "@/lib/transactions";
+
+export type Transaction = TransactionRecord;
 
 async function fetchTransactions(): Promise<Transaction[]> {
   const response = await fetch("/api/transactions");

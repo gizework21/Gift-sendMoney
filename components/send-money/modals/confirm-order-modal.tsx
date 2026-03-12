@@ -17,13 +17,20 @@ export function ConfirmOrderModal({
   onBack,
   onContinue,
 }: ConfirmOrderModalProps) {
+  const selectedBank = useSendMoneyStore((state) => state.selectedBank);
   const receiverInfo = useSendMoneyStore((state) => state.receiverInfo);
   const receiverAccount = useSendMoneyStore((state) => state.receiverAccount);
+  const transferSummary = useSendMoneyStore((state) => state.transferSummary);
 
-  const receiverName = receiverInfo.receiverName || "Babi Asefga Haile";
-  const receiverPhone = receiverInfo.receiverPhone || "10002334343433";
-  const senderName =
-    receiverAccount.senderName || receiverInfo.senderName || "Solomon Kebede";
+  const receiverName = receiverInfo.receiverName || "Receiver";
+  const receiverPhone = receiverInfo.receiverPhone || "Phone number not added";
+  const senderName = receiverAccount.senderName || receiverInfo.senderName || "Sender";
+  const receiverInitials = receiverName
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase())
+    .join("");
 
   return (
     <Modal
@@ -64,7 +71,7 @@ export function ConfirmOrderModal({
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-[#1c1c1c]">
-                    $ 300.00
+                    $ {transferSummary.usdAmount.toFixed(2)}
                   </p>
                   <p className="text-xs text-[#9b9b9b]">Cash Gift</p>
                 </div>
@@ -77,7 +84,7 @@ export function ConfirmOrderModal({
               </p>
               <div className="mt-2 flex items-center gap-3 rounded-2xl border border-[#edf0ef] bg-white px-4 py-3 shadow-sm">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-(--color-primary) text-xs font-bold text-white">
-                  BA
+                  {receiverInitials || "R"}
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-[#1c1c1c]">
@@ -96,9 +103,12 @@ export function ConfirmOrderModal({
                 <p className="text-xs text-[#9b9b9b]">Sender Name</p>
                 <div className="mt-2 flex items-center gap-2 rounded-xl border border-[#f0f0f0] bg-[#fafafa] px-3 py-2">
                   <span className="text-sm">👤</span>
-                  <span className="text-sm font-semibold text-[#1c1c1c]">
-                    {senderName}
-                  </span>
+                  <div>
+                    <span className="text-sm font-semibold text-[#1c1c1c]">
+                      {senderName}
+                    </span>
+                    <p className="text-xs text-[#9b9b9b]">{selectedBank}</p>
+                  </div>
                 </div>
               </div>
             </div>

@@ -1,3 +1,6 @@
+import { getExchangeRate } from "@/lib/exchange-rate";
+
 export async function GET() {
-  return Response.json({ ok: true, resource: "exchange-rate" });
+  const data = await getExchangeRate();
+  return Response.json({ ok: true, data });
 }

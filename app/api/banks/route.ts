@@ -1,3 +1,5 @@
+import { BANKS } from "@/lib/constants";
+
 export async function GET() {
-  return Response.json({ ok: true, resource: "banks" });
+  return Response.json({ ok: true, data: BANKS });
 }
