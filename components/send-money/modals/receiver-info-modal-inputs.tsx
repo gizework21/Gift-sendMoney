@@ -95,7 +95,7 @@ export function PhoneField({
       <FieldLabel>Receiver&apos;s Phone Number</FieldLabel>
       <div className="relative">
         <Image
-          src="/ethIcon.svg"
+          src="/ethIcon2.svg"
           width={24}
           height={24}
           alt="icon"
