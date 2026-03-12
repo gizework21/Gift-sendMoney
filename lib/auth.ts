@@ -12,7 +12,7 @@ export type AuthUser = {
 const MOCK_USERS: Array<AuthUser & { password: string }> = [
   {
     id: "user_1",
-    name: "Demo User",
+    name: "Admin User",
     email: "demo@gift.et",
     phone: "0929272814",
     role: "admin",
@@ -46,7 +46,7 @@ export const authOptions: NextAuthOptions = {
         const user = MOCK_USERS.find(
           (item) =>
             item.phone?.replace(/\s+/g, "") === phone.replace(/\s+/g, "") &&
-            item.password === password
+            item.password === password,
         );
 
         if (!user) return null;
@@ -59,12 +59,21 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.role = (user as AuthUser).role ?? "user";
+        const authUser = user as AuthUser;
+        token.id = authUser.id;
+        token.name = authUser.name ?? token.name;
+        token.email = authUser.email ?? token.email;
+        token.phone = authUser.phone;
+        token.role = authUser.role ?? "user";
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
+        session.user.id = token.id as string | undefined;
+        session.user.name = token.name ?? session.user.name;
+        session.user.email = token.email ?? session.user.email;
+        session.user.phone = token.phone as string | undefined;
         session.user.role = (token.role as AuthUser["role"]) ?? "user";
       }
       return session;

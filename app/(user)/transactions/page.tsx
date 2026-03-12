@@ -13,11 +13,11 @@ export const componentType = "server";
 
 export default async function Page() {
   const session = await getServerSession(authOptions);
-  const displayName = session?.user?.name ?? "Solomon Kebede";
+  const displayName = session?.user?.name ?? session?.user?.phone ?? "User";
 
   return (
     <main className="min-h-screen bg-[#efefef] p-6">
-      <div className="mx-auto w-full max-w-[1400px] rounded-[28px] bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
+      <div className="mx-auto w-full max-w-350 rounded-[28px] bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
         <TransactionsHeader userName={displayName} />
 
         <div className="mt-4 flex items-center gap-2 text-sm font-semibold text-[#111]">

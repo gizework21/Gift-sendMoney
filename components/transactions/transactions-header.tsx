@@ -1,4 +1,6 @@
 import { UserMenu } from "@/components/admin/user-menu";
+import Image from "next/image";
+import Link from "next/link";
 
 export const componentType = "server";
 
@@ -10,18 +12,9 @@ export function TransactionsHeader({ userName }: TransactionsHeaderProps) {
   return (
     <header className="flex flex-wrap items-center justify-between gap-6 border-b border-[#d8e9e4] pb-4">
       <div className="flex items-center gap-4">
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#e9f5ee]">
-          <svg viewBox="0 0 64 64" aria-hidden="true" className="h-7 w-7">
-            <path
-              d="M32 9c10.8 6.7 18.5 16.2 23 28.6-8.3 5.6-16.4 8.4-24.3 8.4-7.8 0-15.8-2.8-24-8.3C13.2 25.5 20.9 15.8 32 9Z"
-              fill="#0aa56b"
-            />
-            <path
-              d="M32 15.5c-2.6 2.9-4.2 6.7-4.7 11.4l4.7 6.1 4.9-6.2c-.5-4.5-2.2-8.2-4.9-11.3Z"
-              fill="#ffffff"
-            />
-          </svg>
-        </div>
+        <Link href={"/dashboard"}>
+        <Image src={"/logo.svg"} width={110} height={80} alt="logo icon" />
+        </Link>
         <div>
           <h1 className="text-lg font-bold text-[#111]">GIFT ETHIOPIA</h1>
           <p className="text-xs text-[#7d7d7d]">

@@ -1,8 +1,10 @@
 import { headers } from "next/headers";
 import Link from "next/link";
+import { getServerSession } from "next-auth";
 
 import { TransactionsHeader } from "@/components/transactions/transactions-header";
 import { AppFooter } from "@/components/ui/app-footer";
+import { authOptions } from "@/lib/auth";
 
 export const componentType = "server";
 
@@ -93,12 +95,14 @@ function formatMoney(value: number) {
 }
 
 export default async function Page({ params }: PageProps) {
+  const session = await getServerSession(authOptions);
   const transaction = await getTransaction(params.id);
+  const displayName = session?.user?.name ?? session?.user?.phone ?? "User";
 
   return (
     <main className="min-h-screen bg-[#efefef] p-6">
       <div className="mx-auto w-full max-w-[1400px] rounded-[28px] bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
-        <TransactionsHeader userName="Solomon Kebede" />
+        <TransactionsHeader userName={displayName} />
 
         <div className="mt-4 flex items-center gap-3 border-b border-[#d8e9e4] pb-4 text-sm font-semibold text-[#111]">
           <Link

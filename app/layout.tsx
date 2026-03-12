@@ -58,7 +58,7 @@ const outfit = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "GiftSend",
+    default: "Gift Ethiopia",
     template: "%s | GiftSend",
   },
   description:

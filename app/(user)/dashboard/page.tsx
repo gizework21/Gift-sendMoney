@@ -1,16 +1,15 @@
 import { getServerSession } from "next-auth";
 
-import { ActionCard } from "@/components/admin/action-card";
 import { AdminDashboardHeader } from "@/components/admin/admin-dashboard-header";
+import { DashboardActions } from "@/components/admin/dashboard-actions";
 import { AppFooter } from "@/components/ui/app-footer";
-import { adminActions } from "@/data/admin-actions";
 import { authOptions } from "@/lib/auth";
 
 export const componentType = "server";
 
 export default async function Page() {
   const session = await getServerSession(authOptions);
-  const displayName = session?.user?.name ?? "Solomon Kebede";
+  const displayName = session?.user?.name ?? session?.user?.phone ?? "User";
 
   return (
     <main className="min-h-screen bg-[#f3f3f3]">
@@ -26,33 +25,7 @@ export default async function Page() {
             </p>
           </div>
 
-          <div className="mt-6 grid gap-6 lg:grid-cols-4">
-            {adminActions.slice(0, 4).map((card) => (
-              <ActionCard
-                key={card.title}
-                title={card.title}
-                description={card.description}
-                accent={card.accent}
-                background={card.background}
-                href={card.href}
-                icon={card.icon}
-              />
-            ))}
-          </div>
-
-          <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {adminActions.slice(4).map((card) => (
-              <ActionCard
-                key={card.title}
-                title={card.title}
-                description={card.description}
-                accent={card.accent}
-                background={card.background}
-                href={card.href}
-                icon={card.icon}
-              />
-            ))}
-          </div>
+          <DashboardActions />
         </section>
 
         <AppFooter className="pb-6 text-center text-xs text-[#b0b0b0]" />
