@@ -27,7 +27,9 @@ export function SendMoneyClient({
   const { data: exchangeRateData = initialExchangeRate } =
     useExchangeRate(initialExchangeRate);
 
-  const [usdAmount, setUsdAmount] = useState(exchangeRateData.minUsdTransfer);
+  const [usdAmountInput, setUsdAmountInput] = useState(
+    String(exchangeRateData.minUsdTransfer),
+  );
 
   const selectedBank = useSendMoneyStore((state) => state.selectedBank);
   const setSelectedBank = useSendMoneyStore((state) => state.setSelectedBank);
@@ -42,6 +44,7 @@ export function SendMoneyClient({
     minUsdTransfer,
     presetAmounts,
   } = exchangeRateData;
+  const usdAmount = usdAmountInput ? Number(usdAmountInput) : 0;
 
   useEffect(() => {
     if (!selectedBank && banks[0]?.name) {
@@ -74,13 +77,13 @@ export function SendMoneyClient({
   ]);
 
   const onUsdChange = (value: string) => {
-    const nextValue = Number(value);
-    if (Number.isNaN(nextValue)) {
-      setUsdAmount(0);
+    const digitsOnly = value.replace(/\D/g, "");
+    if (!digitsOnly) {
+      setUsdAmountInput("");
       return;
     }
 
-    setUsdAmount(Math.max(0, nextValue));
+    setUsdAmountInput(digitsOnly.replace(/^0+(?=\d)/, ""));
   };
 
   return (
@@ -101,11 +104,12 @@ export function SendMoneyClient({
             totalAmount={totalAmount}
             presets={presetAmounts}
             onUsdChange={onUsdChange}
-            onPresetSelect={setUsdAmount}
+            onPresetSelect={(amount) => setUsdAmountInput(String(amount))}
             onSendMoney={() => {
               if (!isAmountValid) return;
               setOpenStep("bank");
             }}
+            usdAmountInput={usdAmountInput}
           />
         </div>
       </div>

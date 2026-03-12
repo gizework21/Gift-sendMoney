@@ -55,13 +55,13 @@ export function UsdAmountCard({
   minUsdTransfer,
   minAmountMessage,
   onUsdChange,
-  usdAmount,
+  usdAmountInput,
 }: {
   isAmountValid: boolean;
   minUsdTransfer: number;
   minAmountMessage?: string;
   onUsdChange: (value: string) => void;
-  usdAmount: number;
+  usdAmountInput: string;
 }) {
   return (
     <AmountCard
@@ -74,12 +74,11 @@ export function UsdAmountCard({
           <div className="flex items-center gap-1 text-(--color-primary)">
             <span className="text-4xl font-bold">$</span>
             <input
-              type="number"
-              step="1"
+              type="text"
               inputMode="numeric"
-              value={usdAmount}
+              value={usdAmountInput}
               onChange={(event) => onUsdChange(event.target.value)}
-              min={minUsdTransfer}
+              placeholder={String(minUsdTransfer)}
               className={`w-28 bg-transparent text-5xl font-extrabold outline-none ${
                 isAmountValid ? "" : "text-red-500"
               }`}

@@ -21,6 +21,7 @@ export type SendMoneyCalculatorProps = {
   minUsdTransfer: number;
   minAmountMessage?: string;
   usdAmount: number;
+  usdAmountInput: string;
   etbAmount: number;
   totalAmount: number;
   presets: number[];
@@ -36,6 +37,7 @@ export function SendMoneyCalculator({
   minUsdTransfer,
   minAmountMessage,
   usdAmount,
+  usdAmountInput,
   etbAmount,
   totalAmount,
   presets,
@@ -53,7 +55,7 @@ export function SendMoneyCalculator({
           minUsdTransfer={minUsdTransfer}
           minAmountMessage={minAmountMessage}
           onUsdChange={onUsdChange}
-          usdAmount={usdAmount}
+          usdAmountInput={usdAmountInput}
         />
         <EtbAmountCard
           etbAmount={etbAmount}
