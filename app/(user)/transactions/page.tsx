@@ -1,0 +1,51 @@
+import { Manrope } from "next/font/google";
+import { getServerSession } from "next-auth";
+
+import { BackButton } from "@/components/ui/back-button";
+import { TransactionsHeader } from "@/components/transactions/transactions-header";
+import { TransactionsPagination } from "@/components/transactions/transactions-pagination";
+import { TransactionsTable } from "@/components/transactions/transactions-table";
+import { TransactionsToolbar } from "@/components/transactions/transactions-toolbar";
+import { AppFooter } from "@/components/ui/app-footer";
+import { transactionColumns } from "@/data/transactions";
+import { authOptions } from "@/lib/auth";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+export default async function Page() {
+  const session = await getServerSession(authOptions);
+  const displayName = session?.user?.name ?? "Solomon Kebede";
+
+  return (
+    <main className={`${manrope.className} min-h-screen bg-[#efefef] p-6`}>
+      <div className="mx-auto w-full max-w-[1400px] rounded-[28px] bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
+        <TransactionsHeader userName={displayName} />
+
+        <div className="mt-4 flex items-center gap-2 text-sm font-semibold text-[#111]">
+          <BackButton href="/dashboard" />
+          Transactions
+        </div>
+
+        <section className="mt-6">
+          <div>
+            <h2 className="text-sm font-semibold text-[#111]">
+              Transaction Lists
+            </h2>
+            <p className="mt-1 text-xs text-[#8b8b8b]">
+              Search and manage transaction lists.
+            </p>
+          </div>
+
+          <TransactionsToolbar />
+          <TransactionsTable columns={transactionColumns} rows={10} />
+          <TransactionsPagination />
+        </section>
+
+        <AppFooter className="mt-6 text-center text-xs text-[#b0b0b0]" />
+      </div>
+    </main>
+  );
+}
