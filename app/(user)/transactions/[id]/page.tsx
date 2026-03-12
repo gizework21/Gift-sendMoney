@@ -8,12 +8,13 @@ import { authOptions } from "@/lib/auth";
 import { getTransactionById } from "@/lib/transactions";
 
 type PageProps = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 export default async function Page({ params }: PageProps) {
+  const { id } = await params;
   const session = await getServerSession(authOptions);
-  const transaction = getTransactionById(params.id);
+  const transaction = getTransactionById(id);
   const displayName = session?.user?.name ?? session?.user?.phone ?? "User";
 
   if (!transaction) {
