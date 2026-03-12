@@ -33,7 +33,7 @@ export function SuccessModal({ open, onDone }: SuccessModalProps) {
       open={open}
       onClose={onDone}
       containerClassName="justify-end items-stretch p-0 sm:items-start sm:p-[30px]"
-      className="h-screen w-screen max-w-none overflow-hidden rounded-none border-0 bg-[#f4fff7] p-0 shadow-none sm:h-[calc(100vh-60px)] sm:w-[94vw] sm:max-w-155 sm:overflow-auto sm:rounded-4xl sm:border-[#dbe8e1] sm:shadow-[0_30px_80px_rgba(10,90,60,0.25)]"
+      className="h-[100dvh] w-screen max-w-none overflow-hidden rounded-none border-0 bg-[#f4fff7] p-0 shadow-none sm:h-[calc(100vh-60px)] sm:w-[94vw] sm:max-w-155 sm:overflow-auto sm:rounded-4xl sm:border-[#dbe8e1] sm:shadow-[0_30px_80px_rgba(10,90,60,0.25)]"
     >
       <div className="flex h-full min-h-0 flex-col">
         <div className="min-h-0 flex-1 overflow-y-auto p-6">
@@ -119,7 +119,7 @@ export function SuccessModal({ open, onDone }: SuccessModalProps) {
           </div>
         </div>
 
-        <div className="mt-auto w-full bg-white px-7 py-6 md:hidden">
+        <div className="sticky bottom-0 z-20 mt-auto w-full border-t border-[#edf0ef] bg-white px-7 py-6 pb-[max(1rem,env(safe-area-inset-bottom))] shadow-[0_-12px_30px_rgba(0,0,0,0.06)] md:hidden">
           <div className="flex items-center gap-3 sm:gap-4">
             <Button
               type="button"

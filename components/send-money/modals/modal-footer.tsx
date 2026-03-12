@@ -75,7 +75,7 @@ export function ModalFooter({
     <>
       <div
         className={cn(
-          "mt-auto w-full bg-white px-6 py-4 md:hidden",
+          "sticky bottom-0 z-20 mt-auto w-full border-t border-[#edf0ef] bg-white px-6 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] shadow-[0_-12px_30px_rgba(0,0,0,0.06)] md:hidden",
           mobileContainerClassName,
         )}
       >

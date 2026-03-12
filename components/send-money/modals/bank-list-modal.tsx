@@ -46,7 +46,7 @@ export function BankListModal({
       open={open}
       onClose={onClose}
       containerClassName="justify-end items-stretch p-0 sm:items-start sm:p-[30px]"
-      className="h-screen w-screen max-w-none overflow-hidden rounded-none border-0 bg-[#f4fff7] p-0 shadow-none sm:h-[calc(100vh-60px)] sm:w-[94vw] sm:max-w-140 sm:overflow-auto sm:rounded-4xl sm:border-[#dbe8e1] sm:shadow-[0_30px_80px_rgba(10,90,60,0.25)]"
+      className="h-[100dvh] w-screen max-w-none overflow-hidden rounded-none border-0 bg-[#f4fff7] p-0 shadow-none sm:h-[calc(100vh-60px)] sm:w-[94vw] sm:max-w-140 sm:overflow-auto sm:rounded-4xl sm:border-[#dbe8e1] sm:shadow-[0_30px_80px_rgba(10,90,60,0.25)]"
     >
       <div className="flex min-h-0 flex-1 flex-col overflow-y-auto p-5 sm:p-6">
         <div className="md:hidden">
