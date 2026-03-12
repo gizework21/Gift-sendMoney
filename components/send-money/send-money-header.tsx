@@ -1,14 +1,14 @@
 "use client";
 
 import * as React from "react";
-
 import {
-  CartIcon,
-  ChevronRightIcon,
-  DollarIcon,
-  QuestionIcon,
-  TruckIcon,
-} from "./icons";
+  BadgeDollarSign,
+  ChevronRight,
+  CircleHelp,
+  ShoppingCart,
+  Truck,
+} from "lucide-react";
+
 import Image from "next/image";
 
 export type SendMoneyHeaderProps = {
@@ -34,21 +34,21 @@ export function SendMoneyHeader({
           onClick={onHelpClick}
           className="flex h-10 w-10 items-center justify-center bg-white rounded-full border border-(--color-primary) text-[#1f4a73]"
         >
-          <QuestionIcon />
+          <CircleHelp className="h-5 w-5" aria-hidden="true" />
         </button>
         <button
           type="button"
           onClick={onDeliveryClick}
           className="flex h-10 w-10 items-center justify-center bg-white rounded-full border border-(--color-primary) text-[#1f4a73]"
         >
-          <TruckIcon />
+          <Truck className="h-5 w-5" aria-hidden="true" />
         </button>
         <button
           type="button"
           onClick={onDeliveryClick}
           className="flex md:hidden h-10 w-10 items-center bg-white justify-center rounded-full border border-(--color-primary) text-[#1f4a73]"
         >
-          <DollarIcon />
+          <BadgeDollarSign className="h-8 w-8" aria-hidden="true" />
         </button>
         <Image
           src={"/bag.svg"}
@@ -63,14 +63,14 @@ export function SendMoneyHeader({
           className="hidden md:flex items-center gap-3 rounded-full bg-[linear-gradient(135deg,var(--color-primary-deep)_0%,var(--color-primary)_100%)] px-4 py-2 text-left text-white shadow-lg"
         >
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15">
-            <CartIcon />
+            <ShoppingCart className="h-5 w-5" aria-hidden="true" />
           </span>
           <span className="leading-tight">
             <span className="block text-sm font-semibold">View Cart</span>
             <span className="block text-xs text-white/80">Cart Detail</span>
           </span>
           <span className="ml-2 flex h-7 w-7 items-center justify-center rounded-full bg-white/15">
-            <ChevronRightIcon />
+            <ChevronRight className="h-4 w-4" aria-hidden="true" />
           </span>
         </button>
       </div>

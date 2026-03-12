@@ -7,7 +7,7 @@ export function Toaster() {
   const toasts = useToastStore((state) => state.toasts);
 
   return (
-    <div className="fixed right-6 top-6 z-[100] flex w-[320px] flex-col gap-3">
+    <div className="fixed right-6 top-6 z-100 flex w-[320px] flex-col gap-3">
       {toasts.map((toast) => (
         <Toast
           key={toast.id}

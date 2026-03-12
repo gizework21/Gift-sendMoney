@@ -1,5 +1,4 @@
 import { getServerSession } from "next-auth";
-
 import { BackButton } from "@/components/ui/back-button";
 import { TransactionsHeader } from "@/components/transactions/transactions-header";
 import { TransactionsPagination } from "@/components/transactions/transactions-pagination";

@@ -5,29 +5,14 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button } from "@/components/ui/button";
+import { LoginFlowPanel, type LoginStep } from "@/components/auth/login-flow-panel";
 import { loginSchema } from "@/validations/auth-schema";
-import {
-  AuthCardHeader,
-  AuthHero,
-  Copyright,
-  PasswordField,
-  PhoneField,
-  type LoginFormValues,
-} from "@/components/auth/login-flow-components";
-
-export type LoginStep = "phone" | "password";
+import { type LoginFormValues } from "@/components/auth/login-flow-components";
 
 export type LoginFlowProps = {
   initialStep?: LoginStep;
 };
-
-const DESCRIPTION_BY_STEP: Record<LoginStep, string> = {
-  phone:
-    "Please enter your phone number and Password to Login to your account.",
-  password:
-    "Please enter your phone number and Password to Login to your account.",
-};
+export const componentType = "client";
 
 export function LoginFlow({ initialStep = "phone" }: LoginFlowProps) {
   const [step, setStep] = useState<LoginStep>(initialStep);
@@ -109,50 +94,14 @@ export function LoginFlow({ initialStep = "phone" }: LoginFlowProps) {
       className="min-h-screen min-w-full bg-white px-4 py-6 sm:p-6"
       onKeyDown={handleKeyDown}
     >
-      <div className="mx-auto grid w-full min-h-[calc(100vh-48px)] max-w-full gap-6 overflow-hidden rounded-[40px] bg-white lg:grid-cols-2">
-        <AuthHero />
-
-        <section className="flex min-h-full flex-col items-center justify-center bg-white px-4 py-8 shadow-lg sm:px-8 sm:py-12 lg:rounded-4xl lg:px-10 lg:py-16">
-          <div className="flex h-full w-full flex-col items-center justify-center px-0 py-4 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
-            <div className="flex w-full max-w-130 flex-col justify-center rounded-[28px] border border-[#efefef] bg-white px-5 py-8 sm:max-w-140 sm:px-8 sm:py-10 lg:w-lg lg:max-w-none">
-              <AuthCardHeader description={DESCRIPTION_BY_STEP[step]} />
-
-              {loginError && (
-                <div className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-center text-sm text-red-600">
-                  {loginError}
-                </div>
-              )}
-
-              <div className="mt-8 space-y-4">
-                {step === "phone" ? (
-                  <PhoneField
-                    error={errors.phone?.message}
-                    register={register}
-                  />
-                ) : (
-                  <PasswordField
-                    error={errors.password?.message}
-                    register={register}
-                  />
-                )}
-
-                <Button
-                  type="button"
-                  variant="primary"
-                  className="w-full py-3 text-sm font-semibold"
-                  disabled={isSubmitting}
-                  onClick={handleContinue}
-                  aria-busy={isSubmitting}
-                >
-                  {isSubmitting ? "Signing in..." : "Continue"}
-                </Button>
-              </div>
-            </div>
-
-            <Copyright />
-          </div>
-        </section>
-      </div>
+      <LoginFlowPanel
+        errors={errors}
+        isSubmitting={isSubmitting}
+        loginError={loginError}
+        onContinue={handleContinue}
+        register={register}
+        step={step}
+      />
     </main>
   );
 }

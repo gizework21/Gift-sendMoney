@@ -16,7 +16,18 @@ export type ReceiverAccount = {
   senderName: string;
 };
 
+export type SendMoneyStep =
+  | null
+  | "bank"
+  | "receiver"
+  | "account"
+  | "confirm"
+  | "payment"
+  | "success";
+
 type SendMoneyState = {
+  openStep: SendMoneyStep;
+  setOpenStep: (step: SendMoneyStep) => void;
   selectedBank: string;
   setSelectedBank: (bankName: string) => void;
   receiverInfo: ReceiverInfo;
@@ -42,6 +53,8 @@ const defaultReceiverAccount: ReceiverAccount = {
 };
 
 export const useSendMoneyStore = create<SendMoneyState>((set) => ({
+  openStep: null,
+  setOpenStep: (step) => set({ openStep: step }),
   selectedBank: "",
   setSelectedBank: (bankName) => set({ selectedBank: bankName }),
   receiverInfo: defaultReceiverInfo,

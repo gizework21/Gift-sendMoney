@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { type UseFormRegister } from "react-hook-form";
+import { Eye } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
@@ -7,15 +8,6 @@ export type LoginFormValues = {
   phone: string;
   password: string;
 };
-
-const EyeIcon = () => (
-  <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4">
-    <path
-      d="M12 5c5.5 0 9.8 4.5 10.8 6-1 1.5-5.3 6-10.8 6S2.2 12.5 1.2 11C2.2 9.5 6.5 5 12 5Zm0 3.2A2.8 2.8 0 1 0 12 13.8a2.8 2.8 0 0 0 0-5.6Z"
-      fill="currentColor"
-    />
-  </svg>
-);
 
 export const AuthHero = () => (
   <section className="hidden md:flex min-h-full flex-col items-center justify-center bg-[#eaffed] px-6 py-10 sm:px-8 sm:py-12 lg:rounded-4xl lg:px-10 lg:py-16">
@@ -108,7 +100,7 @@ export const PasswordField = ({ error, register }: FieldProps) => (
         {...register("password")}
       />
       <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[#b0b0b0]">
-        <EyeIcon />
+        <Eye className="h-4 w-4" aria-hidden="true" />
       </span>
     </div>
     <div className="flex justify-end">

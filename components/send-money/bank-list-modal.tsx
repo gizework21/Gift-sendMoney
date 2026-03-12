@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
 import Image from "next/image";
+import { ChevronLeft } from "lucide-react";
 
 
 export type Bank = {
@@ -43,16 +44,7 @@ export function BankListModal({
             className="flex h-10 w-10 items-center justify-center rounded-full border border-white bg-white shadow-sm"
             aria-label="Go back"
           >
-            <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
-              <path
-                d="M15 6l-6 6 6 6"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <ChevronLeft className="h-4 w-4" aria-hidden="true" />
           </button>
         </div>
 
@@ -84,8 +76,8 @@ export function BankListModal({
                     <Image
                       src={bank.logoUrl}
                       alt={`${bank.name} logo`}
-                      width={12}
-                      height={12}
+                      width={48}
+                      height={48}
                       className="object-contain"
                     />
                   </div>

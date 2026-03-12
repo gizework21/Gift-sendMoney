@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Bell } from "lucide-react";
 
 import { UserMenu } from "@/components/admin/user-menu";
 import Image from "next/image";
@@ -22,12 +23,7 @@ export function AdminDashboardHeader({ userName }: AdminDashboardHeaderProps) {
 
         <div className="flex items-center gap-4">
           <button className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-white/10">
-            <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
-              <path
-                d="M12 3a5 5 0 0 1 5 5v2.5c0 .9.3 1.7.9 2.4l1.1 1.3V16H5v-1.8l1.1-1.3c.6-.7.9-1.5.9-2.4V8a5 5 0 0 1 5-5Zm0 18a2.5 2.5 0 0 0 2.4-2H9.6A2.5 2.5 0 0 0 12 21Z"
-                fill="currentColor"
-              />
-            </svg>
+            <Bell className="h-5 w-5" aria-hidden="true" />
           </button>
           <UserMenu
             name={userName}

@@ -1,7 +1,6 @@
 "use client";
 
-import * as React from "react";
-
+import { ChevronLeft, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
 import { useSendMoneyStore } from "@/store/use-send-money-store";
@@ -14,20 +13,7 @@ export type ConfirmOrderModalProps = {
 };
 
 function DocumentIcon() {
-  return (
-    <svg viewBox="0 0 80 80" aria-hidden="true" className="h-16 w-16">
-      <path
-        d="M20 10h24l16 16v40a4 4 0 0 1-4 4H20a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4Z"
-        fill="#f4f4f4"
-        stroke="#cfcfcf"
-        strokeWidth="2"
-      />
-      <path d="M44 10v14a4 4 0 0 0 4 4h12" fill="#e5e5e5" />
-      <rect x="26" y="34" width="28" height="4" rx="2" fill="#ffb74d" />
-      <rect x="26" y="42" width="28" height="4" rx="2" fill="#b0b0b0" />
-      <rect x="26" y="50" width="18" height="4" rx="2" fill="#ffb74d" />
-    </svg>
-  );
+  return <FileText aria-hidden="true" className="h-16 w-16 text-[#b0b0b0]" />;
 }
 
 export function ConfirmOrderModal({
@@ -59,16 +45,7 @@ export function ConfirmOrderModal({
               className="flex h-10 w-10 items-center justify-center rounded-full border border-white bg-white shadow-sm"
               aria-label="Go back"
             >
-              <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
-                <path
-                  d="M15 6l-6 6 6 6"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <ChevronLeft className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
 

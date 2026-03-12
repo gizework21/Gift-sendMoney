@@ -1,5 +1,6 @@
 "use client";
 
+import { ChevronDown } from "lucide-react";
 import { signOut } from "next-auth/react";
 
 import { Dropdown } from "@/components/ui/dropdown";
@@ -35,9 +36,7 @@ export function UserMenu({ name, subtitle, theme = "dark" }: UserMenuProps) {
             <p className="font-semibold">{name}</p>
             <p className={`text-xs ${subTextColor}`}>{subtitle}</p>
           </div>
-          <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
-            <path d="M7 9l5 5 5-5" stroke="currentColor" strokeWidth="2" fill="none" />
-          </svg>
+          <ChevronDown className="h-4 w-4" aria-hidden="true" />
         </div>
       }
     >
