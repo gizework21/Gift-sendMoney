@@ -5,7 +5,6 @@ import { signOut } from "next-auth/react";
 import { Dropdown } from "@/components/ui/dropdown";
 import { getInitials } from "@/lib/format";
 
-export const componentType = "client";
 
 export type UserMenuProps = {
   name: string;

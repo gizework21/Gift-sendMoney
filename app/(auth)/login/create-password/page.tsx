@@ -1,8 +1,5 @@
-export const componentType = "server";
 function page() {
-  return (
-    <div>page</div>
-  )
+  return <div>page</div>;
 }
 
-export default page
+export default page;

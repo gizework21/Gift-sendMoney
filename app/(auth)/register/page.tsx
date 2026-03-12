@@ -1,11 +1,8 @@
-export const componentType = "server";
 export default function Page() {
   return (
     <main className="p-6">
       <h1 className="text-2xl font-semibold">Register</h1>
-      <p className="mt-2 text-sm text-gray-500">
-        TODO: Build this page.
-      </p>
+      <p className="mt-2 text-sm text-gray-500">TODO: Build this page.</p>
     </main>
   );
 }

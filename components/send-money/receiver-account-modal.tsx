@@ -14,25 +14,12 @@ import {
 } from "@/store/use-send-money-store";
 import Image from "next/image";
 
-export const componentType = "client";
 
 export type ReceiverAccountModalProps = {
   open: boolean;
   onBack: () => void;
   onContinue: () => void;
 };
-
-function UserIcon() {
-  return (
-    <svg viewBox="0 0 96 96" aria-hidden="true" className="h-20 w-20">
-      <circle cx="40" cy="34" r="16" fill="#f4b183" />
-      <path d="M20 78c4-16 16-26 28-26s24 10 28 26" fill="#1f9b7a" />
-      <circle cx="68" cy="40" r="12" fill="#f2994a" />
-      <rect x="62" y="36" width="12" height="12" rx="2" fill="#ffffff" />
-      <rect x="65" y="39" width="6" height="6" rx="1" fill="#f2994a" />
-    </svg>
-  );
-}
 
 function ChevronRightIcon() {
   return (
@@ -148,7 +135,7 @@ export function ReceiverAccountModal({
                 />
                 <button
                   type="button"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-[#e9f7ee] p-2 text-[color:var(--color-primary)]"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-[#e9f7ee] p-2 text-(--color-primary)"
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -171,7 +158,7 @@ export function ReceiverAccountModal({
 
             <div className="mt-4 flex items-center justify-between rounded-[18px] border border-[#e3f0e6] bg-[#eef7ea] px-4 py-3">
               <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[color:var(--color-primary)] text-xs font-bold text-white">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-(--color-primary) text-xs font-bold text-white">
                   PM
                 </span>
                 <div>
@@ -181,7 +168,7 @@ export function ReceiverAccountModal({
                   <p className="text-xs text-[#4d4d4d]">103467648788909</p>
                 </div>
               </div>
-              <span className="text-[color:var(--color-primary)]">
+              <span className="text-(--color-primary)">
                 <ChevronRightIcon />
               </span>
             </div>

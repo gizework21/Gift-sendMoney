@@ -1,16 +1,14 @@
 "use client";
-
-import * as React from "react";
-
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
+import Image from "next/image";
 
-export const componentType = "client";
 
 export type Bank = {
   name: string;
   initials: string;
   color: string;
+  logoUrl?: string;
 };
 
 export type BankListModalProps = {
@@ -35,7 +33,7 @@ export function BankListModal({
       open={open}
       onClose={onClose}
       containerClassName="justify-end items-stretch p-0 sm:items-start sm:p-[30px]"
-      className="h-screen w-screen max-w-none overflow-auto rounded-none border-0 bg-[#f4fff7] p-0 shadow-none sm:h-[calc(100vh-60px)] sm:w-[94vw] sm:max-w-[560px] sm:rounded-[32px] sm:border-[#dbe8e1] sm:shadow-[0_30px_80px_rgba(10,90,60,0.25)]"
+      className="h-screen w-screen max-w-none overflow-auto rounded-none border-0 bg-[#f4fff7] p-0 shadow-none sm:h-[calc(100vh-60px)] sm:w-[94vw] sm:max-w-140 sm:rounded-4xl sm:border-[#dbe8e1] sm:shadow-[0_30px_80px_rgba(10,90,60,0.25)]"
     >
       <div className="flex min-h-full flex-col p-5 sm:p-6">
         <div className="md:hidden">
@@ -77,16 +75,28 @@ export function BankListModal({
                 onClick={() => onSelectBank(bank.name)}
                 className={`rounded-[22px] border border-white bg-white px-3 py-4 text-center shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition ${
                   isActive
-                    ? "ring-2 ring-[color:var(--color-primary)]"
+                    ? "ring-2 ring-(--color-primary)"
                     : "border-transparent"
                 }`}
               >
-                <div
-                  className="mx-auto flex h-12 w-12 items-center justify-center rounded-full text-xs font-bold text-white"
-                  style={{ backgroundColor: bank.color }}
-                >
-                  {bank.initials}
-                </div>
+                {bank.logoUrl ? (
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white">
+                    <Image
+                      src={bank.logoUrl}
+                      alt={`${bank.name} logo`}
+                      width={12}
+                      height={12}
+                      className="object-contain"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="mx-auto flex h-12 w-12 items-center justify-center rounded-full text-xs font-bold text-white"
+                    style={{ backgroundColor: bank.color }}
+                  >
+                    {bank.initials}
+                  </div>
+                )}
                 <p className="mt-2 text-xs font-semibold text-[#1c1c1c]">
                   {bank.name}
                 </p>

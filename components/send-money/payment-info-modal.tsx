@@ -1,60 +1,11 @@
 "use client";
 
-import * as React from "react";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Modal } from "@/components/ui/modal";
 import { MonthSelect, YearSelect } from "@/components/ui/date-picker";
+import { COUNTRIES } from "@/lib/constants";
 
-export const componentType = "client";
-
-const COUNTRIES = [
-  "Ethiopia",
-  "United States",
-  "United Kingdom",
-  "Canada",
-  "Germany",
-  "France",
-  "Italy",
-  "Spain",
-  "Netherlands",
-  "Sweden",
-  "Norway",
-  "Denmark",
-  "Finland",
-  "Switzerland",
-  "Belgium",
-  "Ireland",
-  "Portugal",
-  "Greece",
-  "Poland",
-  "Turkey",
-  "United Arab Emirates",
-  "Saudi Arabia",
-  "Qatar",
-  "Kuwait",
-  "South Africa",
-  "Kenya",
-  "Nigeria",
-  "Ghana",
-  "Rwanda",
-  "Uganda",
-  "Tanzania",
-  "India",
-  "Pakistan",
-  "Bangladesh",
-  "Sri Lanka",
-  "China",
-  "Japan",
-  "South Korea",
-  "Australia",
-  "New Zealand",
-  "Brazil",
-  "Mexico",
-  "Argentina",
-  "Chile",
-];
 
 export type PaymentInfoModalProps = {
   open: boolean;
@@ -82,7 +33,7 @@ export function PaymentInfoModal({
       open={open}
       onClose={onBack}
       containerClassName="justify-end items-stretch p-0 sm:items-start sm:p-[30px]"
-      className="h-screen w-screen max-w-none overflow-auto rounded-none border-0 bg-[#f4fff7] p-0 shadow-none sm:h-[calc(100vh-60px)] sm:w-[94vw] sm:max-w-[620px] sm:rounded-[32px] sm:border-[#dbe8e1] sm:shadow-[0_30px_80px_rgba(10,90,60,0.25)]"
+      className="h-screen w-screen max-w-none overflow-auto rounded-none border-0 bg-[#f4fff7] p-0 shadow-none sm:h-[calc(100vh-60px)] sm:w-[94vw] sm:max-w-155 sm:rounded-4xl sm:border-[#dbe8e1] sm:shadow-[0_30px_80px_rgba(10,90,60,0.25)]"
     >
       <div className="flex flex-col justify-between h-full">
         <div className="p-6">
@@ -133,7 +84,7 @@ export function PaymentInfoModal({
               </div>
             </div>
 
-            <div className="rounded-[24px] border border-[#edf0ef] bg-white p-5 shadow-sm">
+            <div className="rounded-3xl border border-[#edf0ef] bg-white p-5 shadow-sm">
               <p className="text-xs font-semibold text-[#2a2a2a]">
                 Choose your Payment method
               </p>
@@ -176,7 +127,7 @@ export function PaymentInfoModal({
               </div>
             </div>
 
-            <div className="rounded-[24px] border border-[#edf0ef] bg-white p-5 shadow-sm">
+            <div className="rounded-3xl border border-[#edf0ef] bg-white p-5 shadow-sm">
               <p className="text-xs font-semibold text-[#2a2a2a]">
                 Billing Address{" "}
                 <span className="text-[#9b9b9b]">(Optional)</span>

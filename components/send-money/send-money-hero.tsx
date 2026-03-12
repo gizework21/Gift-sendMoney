@@ -1,11 +1,6 @@
 "use client";
 
-import * as React from "react";
-
 import { Button } from "@/components/ui/button";
-import { CheckIcon } from "./icons";
-
-export const componentType = "client";
 
 export type SendMoneyHeroProps = {
   exchangeRate: number;

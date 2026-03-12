@@ -4,8 +4,6 @@ import { Button } from "@/components/ui/button";
 import { InfoIcon } from "./icons";
 import Image from "next/image";
 
-export const componentType = "client";
-
 export type SendMoneyCalculatorProps = {
   exchangeRate: number;
   giftRate: number;
@@ -48,7 +46,7 @@ export function SendMoneyCalculator({
           <Image
             src={"/dollarIcon.svg"}
             width={25}
-            height={5}  
+            height={5}
             alt="us icon"
             className="hidden md:flex"
           />
@@ -61,12 +59,12 @@ export function SendMoneyCalculator({
       </div>
 
       <div className="space-y-5 p-3 md:p-5">
-        <div className="rounded-[24px] bg-white p-5 shadow-sm">
+        <div className="rounded-3xl bg-white p-5 shadow-sm">
           <p className="text-sm font-medium text-[#9a9a9a]">
             Enter Amount (USD)
           </p>
           <div className="mt-4 flex items-center justify-between gap-4">
-            <div className="flex items-center gap-1 text-[color:var(--color-primary)]">
+            <div className="flex items-center gap-1 text-(--color-primary)">
               <span className="text-4xl font-bold">$</span>
               <input
                 type="number"
@@ -84,13 +82,13 @@ export function SendMoneyCalculator({
               <span className="text-sm font-semibold text-[#1c1c1c]">USD</span>
             </div>
           </div>
-          <div className="mt-4 flex items-center gap-2 text-xs font-medium text-[color:var(--color-primary)]">
+          <div className="mt-4 flex items-center gap-2 text-xs font-medium text-(--color-primary)">
             <InfoIcon />
             Minimum Transfer Amount: ${minUsdTransfer}
           </div>
         </div>
 
-        <div className="rounded-[24px] bg-white p-5 shadow-sm">
+        <div className="rounded-3xl bg-white p-5 shadow-sm">
           <p className="text-sm font-medium text-[#9a9a9a]">
             Enter Amount (ETB)
           </p>
@@ -106,7 +104,7 @@ export function SendMoneyCalculator({
               <span className="text-sm font-semibold text-[#1c1c1c]">ETB</span>
             </div>
           </div>
-          <div className="mt-4 flex items-center gap-2 text-xs font-medium text-[color:var(--color-primary)]">
+          <div className="mt-4 flex items-center gap-2 text-xs font-medium text-(--color-primary)">
             <InfoIcon />
             Minimum Transfer Amount:{" "}
             {formatNumber(exchangeRate * minUsdTransfer, 2, 2)} ETB
@@ -114,11 +112,11 @@ export function SendMoneyCalculator({
         </div>
 
         <div className="rounded-[22px] border border-[#e7efe7] bg-white p-4 shadow-sm">
-          <div className="rounded-[18px] bg-[radial-gradient(circle_at_1px_1px,rgba(15,122,72,0.08)_1px,transparent_0)] bg-[length:24px_24px] p-4">
+          <div className="rounded-[18px] bg-[radial-gradient(circle_at_1px_1px,rgba(15,122,72,0.08)_1px,transparent_0)] bg-size-[24px_24px] p-4">
             <p className="text-sm font-semibold text-[#2a2a2a]">
               Total (Amount + Gift)
             </p>
-            <p className="mt-2 text-2xl font-extrabold text-[color:var(--color-primary)]">
+            <p className="mt-2 text-2xl font-extrabold text-(--color-primary)">
               {formatNumber(totalAmount, 2, 2)}
             </p>
           </div>

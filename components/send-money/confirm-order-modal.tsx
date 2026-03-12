@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
 import { useSendMoneyStore } from "@/store/use-send-money-store";
 
-export const componentType = "client";
 
 export type ConfirmOrderModalProps = {
   open: boolean;

@@ -1,7 +1,5 @@
 import * as React from "react";
 
-export const componentType = "server";
-
 export type HeaderProps = React.HTMLAttributes<HTMLDivElement>;
 
 export function Header({ className, ...props }: HeaderProps) {

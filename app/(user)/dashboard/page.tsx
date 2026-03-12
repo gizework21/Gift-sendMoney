@@ -5,8 +5,6 @@ import { DashboardActions } from "@/components/admin/dashboard-actions";
 import { AppFooter } from "@/components/ui/app-footer";
 import { authOptions } from "@/lib/auth";
 
-export const componentType = "server";
-
 export default async function Page() {
   const session = await getServerSession(authOptions);
   const displayName = session?.user?.name ?? session?.user?.phone ?? "User";

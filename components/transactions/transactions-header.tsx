@@ -2,8 +2,6 @@ import { UserMenu } from "@/components/admin/user-menu";
 import Image from "next/image";
 import Link from "next/link";
 
-export const componentType = "server";
-
 export type TransactionsHeaderProps = {
   userName: string;
 };
@@ -13,7 +11,7 @@ export function TransactionsHeader({ userName }: TransactionsHeaderProps) {
     <header className="flex flex-wrap items-center justify-between gap-6 border-b border-[#d8e9e4] pb-4">
       <div className="flex items-center gap-4">
         <Link href={"/dashboard"}>
-        <Image src={"/logo.svg"} width={110} height={80} alt="logo icon" />
+          <Image src={"/logo.svg"} width={110} height={80} alt="logo icon" />
         </Link>
         <div>
           <h1 className="text-lg font-bold text-[#111]">GIFT ETHIOPIA</h1>

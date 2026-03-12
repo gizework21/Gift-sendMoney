@@ -4,8 +4,6 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-export const componentType = "client";
-
 export type DialogProps = {
   open?: boolean;
   onClose?: () => void;
@@ -26,7 +24,7 @@ export function Dialog({ open = false, onClose, children }: DialogProps) {
         role="dialog"
         aria-modal="true"
         className={cn(
-          "relative z-50 w-full max-w-lg rounded-lg border bg-background p-6 shadow-lg"
+          "relative z-50 w-full max-w-lg rounded-lg border bg-background p-6 shadow-lg",
         )}
       >
         {children}
@@ -41,7 +39,10 @@ export function DialogHeader({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn("flex flex-col space-y-1.5 text-center sm:text-left", className)}
+      className={cn(
+        "flex flex-col space-y-1.5 text-center sm:text-left",
+        className,
+      )}
       {...props}
     />
   );
@@ -53,7 +54,10 @@ export function DialogFooter({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2", className)}
+      className={cn(
+        "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
+        className,
+      )}
       {...props}
     />
   );
@@ -65,7 +69,10 @@ export function DialogTitle({
 }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h2
-      className={cn("text-lg font-semibold leading-none tracking-tight", className)}
+      className={cn(
+        "text-lg font-semibold leading-none tracking-tight",
+        className,
+      )}
       {...props}
     />
   );
@@ -76,9 +83,6 @@ export function DialogDescription({
   ...props
 }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
-    <p
-      className={cn("text-sm text-muted-foreground", className)}
-      {...props}
-    />
+    <p className={cn("text-sm text-muted-foreground", className)} {...props} />
   );
 }

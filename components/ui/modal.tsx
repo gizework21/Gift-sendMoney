@@ -4,8 +4,6 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-export const componentType = "client";
-
 export type ModalProps = {
   open?: boolean;
   onClose?: () => void;
@@ -27,7 +25,7 @@ export function Modal({
     <div
       className={cn(
         "fixed inset-0 z-50 flex items-center justify-center",
-        containerClassName
+        containerClassName,
       )}
     >
       <div
@@ -40,7 +38,7 @@ export function Modal({
         aria-modal="true"
         className={cn(
           "relative z-50 w-full max-w-lg rounded-lg border bg-background p-6 shadow-lg",
-          className
+          className,
         )}
       >
         {children}

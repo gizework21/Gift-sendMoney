@@ -7,8 +7,6 @@ import { Modal } from "@/components/ui/modal";
 import { adminActions } from "@/data/admin-actions";
 import Image from "next/image";
 
-export const componentType = "client";
-
 type PendingAction = {
   title: string;
   description: string;
@@ -28,7 +26,7 @@ function ComingSoonModal({
       open={open}
       onClose={onClose}
       containerClassName="items-center justify-center p-4 sm:p-6"
-      className="w-full max-w-[700px] overflow-hidden rounded-[36px] border-0 bg-white p-0 shadow-[0_36px_120px_rgba(0,0,0,0.18)]"
+      className="w-full max-w-175 overflow-hidden rounded-[36px] border-0 bg-white p-0 shadow-[0_36px_120px_rgba(0,0,0,0.18)]"
     >
       <div className="px-8 pb-10 pt-14 text-center sm:px-12">
         <div className="flex justify-center">
@@ -37,9 +35,9 @@ function ComingSoonModal({
         <h2 className="mt-8 text-[26px] font-bold tracking-[-0.03em] text-[#111]">
           Coming Soon
         </h2>
-        <p className="mx-auto mt-3 max-w-[560px] text-base text-[#8a8a8a]">
+        <p className="mx-auto mt-3 max-w-140 text-base text-[#8a8a8a]">
           {action?.description ??
-            "This feature is not available yet. We’re working hard to bring it to you soon — stay tuned for updates!"}
+            `This feature is not available yet. We're working hard to bring it to you soon — stay tuned for updates!`}
         </p>
       </div>
 
@@ -71,7 +69,7 @@ function ActionTile({
 }) {
   return (
     <div
-      className="rounded-[24px] border border-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_35px_rgba(0,0,0,0.12)]"
+      className="rounded-3xl border border-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_35px_rgba(0,0,0,0.12)]"
       style={{ backgroundColor: background }}
     >
       <div className="flex items-center justify-center">

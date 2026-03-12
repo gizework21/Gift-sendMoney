@@ -14,8 +14,6 @@ import { SuccessModal } from "@/components/send-money/success-modal";
 import { BANKS } from "@/lib/constants";
 import { useSendMoneyStore } from "@/store/use-send-money-store";
 
-export const componentType = "client";
-
 export type SendMoneyClientProps = {
   exchangeRate: number;
   giftRate: number;

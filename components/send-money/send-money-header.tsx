@@ -11,8 +11,6 @@ import {
 } from "./icons";
 import Image from "next/image";
 
-export const componentType = "client";
-
 export type SendMoneyHeaderProps = {
   onHelpClick?: () => void;
   onDeliveryClick?: () => void;
@@ -34,14 +32,14 @@ export function SendMoneyHeader({
         <button
           type="button"
           onClick={onHelpClick}
-          className="flex h-10 w-10 items-center justify-center bg-white rounded-full border border-[color:var(--color-primary)] text-[#1f4a73]"
+          className="flex h-10 w-10 items-center justify-center bg-white rounded-full border border-(--color-primary) text-[#1f4a73]"
         >
           <QuestionIcon />
         </button>
         <button
           type="button"
           onClick={onDeliveryClick}
-          className="flex h-10 w-10 items-center justify-center bg-white rounded-full border border-[color:var(--color-primary)] text-[#1f4a73]"
+          className="flex h-10 w-10 items-center justify-center bg-white rounded-full border border-(--color-primary) text-[#1f4a73]"
         >
           <TruckIcon />
         </button>

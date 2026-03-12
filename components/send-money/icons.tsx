@@ -1,7 +1,5 @@
 import * as React from "react";
 
-export const componentType = "server";
-
 export function CheckIcon() {
   return (
     <svg viewBox="0 0 20 20" aria-hidden="true" className="h-3.5 w-3.5">

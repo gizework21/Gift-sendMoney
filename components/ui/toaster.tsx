@@ -3,8 +3,6 @@
 import { Toast } from "@/components/ui/toast";
 import { useToastStore } from "@/hooks/use-toast";
 
-export const componentType = "client";
-
 export function Toaster() {
   const toasts = useToastStore((state) => state.toasts);
 

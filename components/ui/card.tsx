@@ -2,8 +2,6 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-export const componentType = "server";
-
 export type CardProps = React.HTMLAttributes<HTMLDivElement>;
 
 export function Card({ className, ...props }: CardProps) {
@@ -11,7 +9,7 @@ export function Card({ className, ...props }: CardProps) {
     <div
       className={cn(
         "rounded-lg border bg-card text-card-foreground shadow-sm",
-        className
+        className,
       )}
       {...props}
     />
@@ -30,7 +28,10 @@ export function CardHeader({ className, ...props }: CardProps) {
 export function CardTitle({ className, ...props }: CardProps) {
   return (
     <h3
-      className={cn("text-2xl font-semibold leading-none tracking-tight", className)}
+      className={cn(
+        "text-2xl font-semibold leading-none tracking-tight",
+        className,
+      )}
       {...props}
     />
   );
@@ -38,10 +39,7 @@ export function CardTitle({ className, ...props }: CardProps) {
 
 export function CardDescription({ className, ...props }: CardProps) {
   return (
-    <p
-      className={cn("text-sm text-muted-foreground", className)}
-      {...props}
-    />
+    <p className={cn("text-sm text-muted-foreground", className)} {...props} />
   );
 }
 

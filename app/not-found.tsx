@@ -1,7 +1,5 @@
 import Link from "next/link";
 
-export const componentType = "server";
-
 export default function NotFound() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-[#f7f7f7] px-6 py-10 text-[#111]">
@@ -16,7 +14,7 @@ export default function NotFound() {
         <div className="mt-6 flex items-center justify-center gap-3">
           <Link
             href="/"
-            className="rounded-full bg-[color:var(--color-primary)] px-5 py-2 text-sm font-semibold text-white shadow-sm"
+            className="rounded-full bg-(--color-primary) px-5 py-2 text-sm font-semibold text-white shadow-sm"
           >
             Go to Home
           </Link>

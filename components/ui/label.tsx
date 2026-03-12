@@ -2,8 +2,6 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-export const componentType = "server";
-
 export type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement>;
 
 export function Label({ className, ...props }: LabelProps) {
@@ -11,7 +9,7 @@ export function Label({ className, ...props }: LabelProps) {
     <label
       className={cn(
         "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-        className
+        className,
       )}
       {...props}
     />

@@ -6,29 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
 import Image from "next/image";
 
-export const componentType = "client";
-
 export type SuccessModalProps = {
   open: boolean;
   onDone: () => void;
 };
-
-function SuccessIcon() {
-  return (
-    <svg viewBox="0 0 96 96" aria-hidden="true" className="h-20 w-20">
-      <circle cx="48" cy="48" r="34" fill="#6edc66" />
-      <circle cx="48" cy="48" r="30" fill="#61cf5a" />
-      <path
-        d="M34 48l10 10 20-20"
-        stroke="#ffffff"
-        strokeWidth="7"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 export function SuccessModal({ open, onDone }: SuccessModalProps) {
   return (

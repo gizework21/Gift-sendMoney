@@ -1,11 +1,7 @@
 import Image from "next/image";
 import { type UseFormRegister } from "react-hook-form";
-
 import { Input } from "@/components/ui/input";
-import Router from "next/router";
 import Link from "next/link";
-
-export const componentType = "server";
 
 export type LoginFormValues = {
   phone: string;
@@ -32,7 +28,7 @@ export const AuthHero = () => (
             height={310}
             alt="STAR Gifts logo"
             priority
-            className="h-auto w-[200px] sm:w-[240px] lg:w-[300px] cursor-pointer"
+            className="h-auto w-50 sm:w-60 lg:w-75 cursor-pointer"
           />
         </Link>
       </div>
@@ -53,7 +49,7 @@ export const AuthCardHeader = ({ description }: { description: string }) => (
           width={130}
           height={100}
           alt="STAR Gifts logo"
-          className="h-auto w-[100px] sm:w-[120px] lg:w-[130px] cursor-pointer"
+          className="h-auto w-25 sm:w-30 lg:w-32.5 cursor-pointer"
         />
       </Link>
     </div>
@@ -118,7 +114,7 @@ export const PasswordField = ({ error, register }: FieldProps) => (
     <div className="flex justify-end">
       <button
         type="button"
-        className="rounded text-xs text-[color:var(--color-primary-ink)] hover:underline focus:outline-none focus:ring-2 focus:ring-primary-ink focus:ring-offset-2"
+        className="rounded text-xs text-(--color-primary-ink) hover:underline focus:outline-none focus:ring-2 focus:ring-primary-ink focus:ring-offset-2"
       >
         Forgot Password?
       </button>

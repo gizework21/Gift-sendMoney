@@ -3,8 +3,6 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Select } from "@/components/ui/select";
 
-export const componentType = "server";
-
 const MONTHS = [
   "January",
   "February",
@@ -24,12 +22,16 @@ export type MonthSelectProps = React.SelectHTMLAttributes<HTMLSelectElement> & {
   startAt?: number;
 };
 
-export function MonthSelect({ className, startAt = 1, ...props }: MonthSelectProps) {
+export function MonthSelect({
+  className,
+  startAt = 1,
+  ...props
+}: MonthSelectProps) {
   return (
     <Select
       className={cn(
         "h-11 rounded-2xl border-[#eef1f0] bg-white/90 text-sm",
-        className
+        className,
       )}
       {...props}
     >
@@ -63,7 +65,7 @@ export function YearSelect({
     <Select
       className={cn(
         "h-11 rounded-2xl border-[#eef1f0] bg-white/90 text-sm",
-        className
+        className,
       )}
       {...props}
     >

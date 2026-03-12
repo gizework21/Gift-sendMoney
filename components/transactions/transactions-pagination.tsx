@@ -1,4 +1,3 @@
-export const componentType = "server";
 export type TransactionsPaginationProps = {
   current?: string;
   pages?: string[];
@@ -16,7 +15,7 @@ export function TransactionsPagination({
           type="button"
           className={`flex h-8 w-8 items-center justify-center rounded-lg border border-[#e5e5e5] ${
             label === current
-              ? "bg-[color:var(--color-primary)] text-white"
+              ? "bg-(--color-primary) text-white"
               : "text-[#2a2a2a]"
           }`}
         >

@@ -16,8 +16,6 @@ import {
   type LoginFormValues,
 } from "@/components/auth/login-flow-components";
 
-export const componentType = "client";
-
 export type LoginStep = "phone" | "password";
 
 export type LoginFlowProps = {
@@ -74,6 +72,7 @@ export function LoginFlow({ initialStep = "phone" }: LoginFlowProps) {
         }
 
         router.push("/dashboard");
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         setLoginError("An unexpected error occurred. Please try again.");
       } finally {
@@ -115,7 +114,7 @@ export function LoginFlow({ initialStep = "phone" }: LoginFlowProps) {
 
         <section className="flex min-h-full flex-col items-center justify-center bg-white px-4 py-8 shadow-lg sm:px-8 sm:py-12 lg:rounded-4xl lg:px-10 lg:py-16">
           <div className="flex h-full w-full flex-col items-center justify-center px-0 py-4 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
-            <div className="flex w-full max-w-[520px] flex-col justify-center rounded-[28px] border border-[#efefef] bg-white px-5 py-8 sm:max-w-[560px] sm:px-8 sm:py-10 lg:w-lg lg:max-w-none">
+            <div className="flex w-full max-w-130 flex-col justify-center rounded-[28px] border border-[#efefef] bg-white px-5 py-8 sm:max-w-140 sm:px-8 sm:py-10 lg:w-lg lg:max-w-none">
               <AuthCardHeader description={DESCRIPTION_BY_STEP[step]} />
 
               {loginError && (
