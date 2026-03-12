@@ -17,7 +17,9 @@ export const componentType = "client";
 export type SendMoneyCalculatorProps = {
   exchangeRate: number;
   giftRate: number;
+  isAmountValid: boolean;
   minUsdTransfer: number;
+  minAmountMessage?: string;
   usdAmount: number;
   etbAmount: number;
   totalAmount: number;
@@ -30,7 +32,9 @@ export type SendMoneyCalculatorProps = {
 export function SendMoneyCalculator({
   exchangeRate,
   giftRate,
+  isAmountValid,
   minUsdTransfer,
+  minAmountMessage,
   usdAmount,
   etbAmount,
   totalAmount,
@@ -45,7 +49,9 @@ export function SendMoneyCalculator({
 
       <div className="space-y-5 p-3 md:p-5">
         <UsdAmountCard
+          isAmountValid={isAmountValid}
           minUsdTransfer={minUsdTransfer}
+          minAmountMessage={minAmountMessage}
           onUsdChange={onUsdChange}
           usdAmount={usdAmount}
         />
@@ -60,7 +66,7 @@ export function SendMoneyCalculator({
           presets={presets}
           usdAmount={usdAmount}
         />
-        <SendMoneyAction onSendMoney={onSendMoney} />
+        <SendMoneyAction isDisabled={!isAmountValid} onSendMoney={onSendMoney} />
         <CalculatorMobileFooter />
       </div>
     </div>

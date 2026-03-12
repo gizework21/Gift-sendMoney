@@ -39,14 +39,17 @@ export function PresetAmountButtons({
 }
 
 export function SendMoneyAction({
+  isDisabled,
   onSendMoney,
 }: {
+  isDisabled?: boolean;
   onSendMoney: () => void;
 }) {
   return (
     <Button
       type="button"
       variant="primary"
+      disabled={isDisabled}
       onClick={onSendMoney}
       className="mt-2 w-full rounded-2xl py-4 text-sm font-semibold"
     >

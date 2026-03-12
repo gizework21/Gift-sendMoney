@@ -51,6 +51,10 @@ export function SendMoneyClient({
 
   const etbAmount = usdAmount * exchangeRate;
   const totalAmount = etbAmount + usdAmount * giftRate;
+  const isAmountValid = usdAmount >= minUsdTransfer;
+  const minAmountMessage = isAmountValid
+    ? undefined
+    : `Minimum transfer amount is $${minUsdTransfer}.`;
 
   useEffect(() => {
     setTransferSummary({
@@ -72,11 +76,11 @@ export function SendMoneyClient({
   const onUsdChange = (value: string) => {
     const nextValue = Number(value);
     if (Number.isNaN(nextValue)) {
-      setUsdAmount(minUsdTransfer);
+      setUsdAmount(0);
       return;
     }
 
-    setUsdAmount(nextValue);
+    setUsdAmount(Math.max(0, nextValue));
   };
 
   return (
@@ -89,14 +93,19 @@ export function SendMoneyClient({
           <SendMoneyCalculator
             exchangeRate={exchangeRate}
             giftRate={giftRate}
+            isAmountValid={isAmountValid}
             minUsdTransfer={minUsdTransfer}
+            minAmountMessage={minAmountMessage}
             usdAmount={usdAmount}
             etbAmount={etbAmount}
             totalAmount={totalAmount}
             presets={presetAmounts}
             onUsdChange={onUsdChange}
             onPresetSelect={setUsdAmount}
-            onSendMoney={() => setOpenStep("bank")}
+            onSendMoney={() => {
+              if (!isAmountValid) return;
+              setOpenStep("bank");
+            }}
           />
         </div>
       </div>

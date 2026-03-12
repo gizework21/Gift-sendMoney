@@ -51,11 +51,15 @@ function AmountCard({
 }
 
 export function UsdAmountCard({
+  isAmountValid,
   minUsdTransfer,
+  minAmountMessage,
   onUsdChange,
   usdAmount,
 }: {
+  isAmountValid: boolean;
   minUsdTransfer: number;
+  minAmountMessage?: string;
   onUsdChange: (value: string) => void;
   usdAmount: number;
 }) {
@@ -66,17 +70,27 @@ export function UsdAmountCard({
       label="Enter Amount (USD)"
       note={<>Minimum Transfer Amount: ${minUsdTransfer}</>}
       value={
-        <div className="flex items-center gap-1 text-(--color-primary)">
-          <span className="text-4xl font-bold">$</span>
-          <input
-            type="number"
-            step="1"
-            inputMode="numeric"
-            value={usdAmount}
-            onChange={(event) => onUsdChange(event.target.value)}
-            className="w-28 bg-transparent text-5xl font-extrabold outline-none"
-            aria-label="Amount in USD"
-          />
+        <div>
+          <div className="flex items-center gap-1 text-(--color-primary)">
+            <span className="text-4xl font-bold">$</span>
+            <input
+              type="number"
+              step="1"
+              inputMode="numeric"
+              value={usdAmount}
+              onChange={(event) => onUsdChange(event.target.value)}
+              min={minUsdTransfer}
+              className={`w-28 bg-transparent text-5xl font-extrabold outline-none ${
+                isAmountValid ? "" : "text-red-500"
+              }`}
+              aria-label="Amount in USD"
+            />
+          </div>
+          {!isAmountValid && minAmountMessage ? (
+            <p className="mt-2 text-xs font-medium text-red-500">
+              {minAmountMessage}
+            </p>
+          ) : null}
         </div>
       }
     />
