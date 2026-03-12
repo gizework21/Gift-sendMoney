@@ -2,7 +2,6 @@
 
 import { useMemo } from "react";
 import { useRouter } from "next/navigation";
-
 import { useTransactions, type Transaction } from "@/hooks/use-transactions";
 
 export type TransactionColumn = {
